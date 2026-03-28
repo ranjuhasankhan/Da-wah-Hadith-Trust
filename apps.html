@@ -1,0 +1,2916 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Da'wah Hadith Trust - Spreading authentic Islamic knowledge globally through Hadith sciences and Da'wah education.">
+<title>Da'wah Hadith Trust | الشيخ Hamza Al Hassan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --ink:      #0B1A12;
+  --ink2:     #1A3326;
+  --ink3:     #264D38;
+  --emerald:  #0D7A4E;
+  --emerald2: #12A367;
+  --gold:     #C8922A;
+  --gold2:    #E8B84B;
+  --gold3:    #F5D98A;
+  --sand:     #F9F4EC;
+  --sand2:    #F0E8D8;
+  --pearl:    #FDFAF5;
+  --text:     #1C2B22;
+  --muted:    #5A7165;
+  --white:    #FFFFFF;
+  --shadow-sm: 0 2px 12px rgba(11,26,18,.08);
+  --shadow-md: 0 8px 32px rgba(11,26,18,.14);
+  --shadow-lg: 0 20px 60px rgba(11,26,18,.2);
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 40px;
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--pearl);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; border: none; }
+input, textarea, select { font-family: inherit; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* Custom Cursor */
+#cursor {
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 99999;
+  transform: translate(-50%,-50%);
+  transition: transform .1s, width .3s var(--ease), height .3s var(--ease), background .3s;
+  mix-blend-mode: multiply;
+}
+#cursor-ring {
+  width: 40px; height: 40px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 99998;
+  transform: translate(-50%,-50%);
+  transition: transform .12s var(--ease), width .3s, height .3s, border-color .3s;
+  opacity: .6;
+}
+body:hover #cursor { opacity: 1; }
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+#preloader {
+  position: fixed; inset: 0;
+  background: var(--ink);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 100000;
+  transition: opacity .8s var(--ease), visibility .8s;
+}
+#preloader.done { opacity: 0; visibility: hidden; }
+.pre-arabic {
+  font-family: 'Scheherazade New', serif;
+  font-size: 4rem; color: var(--gold2);
+  animation: breathe 2s ease-in-out infinite;
+  margin-bottom: 24px;
+}
+.pre-bar-wrap {
+  width: 200px; height: 2px;
+  background: rgba(255,255,255,.1);
+  border-radius: 2px; overflow: hidden;
+}
+.pre-bar {
+  height: 100%; background: var(--gold2);
+  border-radius: 2px;
+  animation: preload 1.4s var(--ease) forwards;
+}
+.pre-label {
+  font-family: 'Playfair Display', serif;
+  color: rgba(255,255,255,.4);
+  font-size: .75rem; letter-spacing: 4px;
+  text-transform: uppercase; margin-top: 16px;
+}
+@keyframes breathe { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.6;transform:scale(.94);} }
+@keyframes preload { from{width:0;} to{width:100%;} }
+
+/* ============================================================
+   ANNOUNCEMENT RIBBON
+   ============================================================ */
+.ribbon {
+  background: var(--gold);
+  padding: 9px 0;
+  overflow: hidden;
+  position: relative; z-index: 100;
+}
+.ribbon-track {
+  display: flex; gap: 0;
+  animation: marquee 28s linear infinite;
+  white-space: nowrap;
+}
+.ribbon-track span {
+  font-size: .8rem; font-weight: 600;
+  color: var(--ink); letter-spacing: .5px;
+  padding: 0 40px;
+  display: flex; align-items: center; gap: 10px;
+}
+.ribbon-track span::after { content:'✦'; color: var(--ink2); }
+@keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.navbar {
+  position: sticky; top: 0; z-index: 1000;
+  padding: 0 48px;
+  background: rgba(11,26,18,.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(200,146,42,.2);
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+  transition: box-shadow .3s;
+}
+.navbar.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,.4); }
+
+.nav-logo { display: flex; align-items: center; gap: 14px; }
+.nav-logo-emblem {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.6rem; color: var(--ink);
+  box-shadow: 0 4px 16px rgba(200,146,42,.4);
+  flex-shrink: 0;
+}
+.nav-logo-text .t1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--gold3); line-height: 1.1;
+}
+.nav-logo-text .t2 {
+  font-size: .68rem; color: rgba(255,255,255,.4);
+  letter-spacing: 2px; text-transform: uppercase;
+}
+
+.nav-center { display: flex; align-items: center; gap: 4px; }
+.nav-link {
+  padding: 8px 16px; border-radius: var(--r-sm);
+  color: rgba(255,255,255,.75);
+  font-size: .88rem; font-weight: 500;
+  transition: color .25s, background .25s;
+  position: relative;
+}
+.nav-link:hover, .nav-link.active { color: var(--gold2); }
+.nav-link.active::after {
+  content: '';
+  position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%);
+  width: 18px; height: 2px; background: var(--gold2); border-radius: 1px;
+}
+
+/* Mega Dropdown */
+.nav-has-sub { position: relative; }
+.nav-sub {
+  position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%);
+  background: var(--ink2);
+  border: 1px solid rgba(200,146,42,.2);
+  border-radius: var(--r-md);
+  padding: 8px;
+  min-width: 220px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateX(-50%) translateY(8px);
+  transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
+}
+.nav-has-sub:hover .nav-sub {
+  opacity: 1; visibility: visible; pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-sub a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: var(--r-sm);
+  color: rgba(255,255,255,.7); font-size: .86rem;
+  transition: background .2s, color .2s;
+}
+.nav-sub a:hover { background: rgba(200,146,42,.1); color: var(--gold2); }
+.nav-sub a span.sub-icon { font-size: 1rem; }
+
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-btn {
+  padding: 9px 20px; border-radius: var(--r-sm);
+  font-size: .86rem; font-weight: 600;
+  transition: all .25s var(--ease);
+}
+.nav-btn.outline {
+  border: 1.5px solid rgba(200,146,42,.5);
+  color: var(--gold2);
+}
+.nav-btn.outline:hover { background: rgba(200,146,42,.12); border-color: var(--gold2); }
+.nav-btn.filled {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+  color: var(--ink); box-shadow: 0 4px 16px rgba(200,146,42,.35);
+}
+.nav-btn.filled:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,146,42,.5); }
+
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; background: none; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--gold2); border-radius: 1px; transition: all .3s; }
+
+/* Mobile Nav */
+.mobile-nav {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: var(--ink);
+  flex-direction: column;
+  align-items: center; justify-content: center; gap: 20px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; color: rgba(255,255,255,.8);
+  transition: color .2s;
+}
+.mobile-nav a:hover { color: var(--gold2); }
+.mobile-close {
+  position: absolute; top: 24px; right: 28px;
+  background: none; border: none; color: var(--gold2);
+  font-size: 2rem; cursor: pointer;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 95vh;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center;
+}
+
+/* Geometric background */
+.hero-geo {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.hero-geo svg {
+  position: absolute; width: 100%; height: 100%;
+}
+.geo-circle {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(200,146,42,.12);
+}
+.gc1 { width: 700px; height: 700px; top: -200px; right: -150px; }
+.gc2 { width: 400px; height: 400px; top: -100px; right: 100px; }
+.gc3 { width: 800px; height: 800px; bottom: -400px; left: -200px; border-color: rgba(13,122,78,.15); }
+
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(200,146,42,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,146,42,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; top: -100px; right: -100px;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(13,122,78,.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute; bottom: -150px; left: -100px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,146,42,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1280px; width: 100%; margin: 0 auto;
+  padding: 80px 48px;
+  display: grid; grid-template-columns: 1.1fr .9fr;
+  gap: 60px; align-items: center;
+  position: relative; z-index: 1;
+}
+
+.hero-left { }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(200,146,42,.1);
+  border: 1px solid rgba(200,146,42,.25);
+  border-radius: 100px;
+  padding: 6px 16px 6px 8px;
+  margin-bottom: 28px;
+}
+.hero-eyebrow .dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--gold); display: flex; align-items: center;
+  justify-content: center; font-size: .7rem; color: var(--ink); font-weight: 700;
+  animation: ping 2s ease-in-out infinite;
+}
+@keyframes ping { 0%,100%{box-shadow:0 0 0 0 rgba(200,146,42,.4);} 50%{box-shadow:0 0 0 8px rgba(200,146,42,0);} }
+.hero-eyebrow span { font-size: .78rem; color: var(--gold2); letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
+
+.hero-arabic-big {
+  font-family: 'Scheherazade New', serif;
+  font-size: 3.6rem; line-height: 1.2;
+  color: rgba(200,146,42,.9);
+  direction: rtl; text-align: right;
+  margin-bottom: 12px;
+  animation: fadeUp .8s var(--ease) both;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.4rem; font-weight: 900;
+  color: var(--white);
+  line-height: 1.1; margin-bottom: 24px;
+  animation: fadeUp .8s .08s var(--ease) both;
+}
+.hero-title em { color: var(--gold2); font-style: normal; }
+.hero-title .line2 { color: rgba(255,255,255,.5); font-weight: 400; font-size: 2.4rem; }
+
+.hero-desc {
+  color: rgba(255,255,255,.6);
+  font-size: 1.05rem; line-height: 1.85;
+  max-width: 520px; margin-bottom: 36px;
+  animation: fadeUp .8s .16s var(--ease) both;
+}
+
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeUp .8s .24s var(--ease) both;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: var(--r-sm);
+  font-size: .92rem; font-weight: 600;
+  transition: all .28s var(--ease); cursor: pointer;
+  border: none; letter-spacing: .3px;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--ink);
+  box-shadow: 0 4px 20px rgba(200,146,42,.4);
+}
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(200,146,42,.5); }
+.btn-ghost {
+  background: rgba(255,255,255,.07);
+  border: 1.5px solid rgba(255,255,255,.2);
+  color: var(--white);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.4); transform: translateY(-3px); }
+.btn-emerald {
+  background: var(--emerald);
+  color: var(--white);
+  box-shadow: 0 4px 20px rgba(13,122,78,.4);
+}
+.btn-emerald:hover { background: var(--emerald2); transform: translateY(-3px); }
+.btn-sm { padding: 9px 18px; font-size: .82rem; }
+.btn-wide { width: 100%; justify-content: center; }
+
+.hero-numbers {
+  display: flex; gap: 36px; margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  animation: fadeUp .8s .32s var(--ease) both;
+}
+.hero-num { }
+.hero-num .val {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem; font-weight: 900;
+  color: var(--gold2); line-height: 1;
+  display: block;
+}
+.hero-num .lbl {
+  font-size: .75rem; color: rgba(255,255,255,.4);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-top: 4px; display: block;
+}
+
+/* Hero Right Card */
+.hero-right { animation: fadeUp .8s .1s var(--ease) both; }
+.sheikh-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(200,146,42,.2);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+.sheikh-card-top {
+  background: linear-gradient(160deg, var(--ink2) 0%, var(--ink3) 100%);
+  padding: 36px 32px 28px;
+  position: relative;
+  border-bottom: 1px solid rgba(200,146,42,.15);
+}
+.sheikh-card-top::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8922A' fill-opacity='0.04'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.sheikh-avatar-ring {
+  width: 120px; height: 120px; margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 50%, var(--emerald2) 100%);
+  padding: 3px;
+  position: relative;
+}
+.sheikh-avatar-inner {
+  width: 100%; height: 100%; border-radius: 50%;
+  background: linear-gradient(135deg, var(--ink2), var(--ink3));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Scheherazade New', serif;
+  font-size: 3rem; color: var(--gold2);
+}
+.sheikh-verified {
+  position: absolute; bottom: 4px; right: 4px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--emerald); border: 3px solid var(--ink2);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: .7rem; font-weight: 700;
+}
+.sheikh-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 700;
+  color: var(--white); text-align: center; margin-bottom: 4px;
+}
+.sheikh-name .arabic { font-family: 'Scheherazade New', serif; font-size: 1.1rem; color: var(--gold2); display: block; }
+.sheikh-role {
+  text-align: center; color: rgba(255,255,255,.5);
+  font-size: .78rem; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.sheikh-tags {
+  display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;
+}
+.sheikh-tag {
+  background: rgba(200,146,42,.12);
+  border: 1px solid rgba(200,146,42,.25);
+  color: var(--gold2); font-size: .7rem;
+  padding: 4px 10px; border-radius: 100px; font-weight: 600;
+}
+
+.sheikh-card-body { padding: 24px 32px; }
+.contact-rows { display: flex; flex-direction: column; gap: 12px; }
+.contact-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--r-sm);
+  transition: background .2s, border-color .2s;
+}
+.contact-row:hover { background: rgba(200,146,42,.06); border-color: rgba(200,146,42,.2); }
+.contact-row-icon {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: .95rem;
+}
+.ci-phone { background: rgba(13,122,78,.2); }
+.ci-email { background: rgba(200,146,42,.15); }
+.ci-location { background: rgba(52,152,219,.15); }
+.ci-fb { background: rgba(24,119,242,.15); }
+.ci-li { background: rgba(10,102,194,.15); }
+.ci-wa { background: rgba(37,211,102,.15); }
+.contact-row-info { flex: 1; min-width: 0; }
+.contact-row-info .cr-label { font-size: .68rem; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: 1.5px; }
+.contact-row-info .cr-val { font-size: .85rem; color: rgba(255,255,255,.85); margin-top: 2px; }
+.contact-row-info a { color: var(--gold2); }
+.contact-row-info a:hover { text-decoration: underline; }
+
+.sheikh-card-footer {
+  padding: 20px 32px 28px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  display: flex; gap: 10px;
+}
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(32px);} to{opacity:1;transform:none;} }
+
+/* ============================================================
+   SCROLL INDICATOR
+   ============================================================ */
+.scroll-ind {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2;
+}
+.scroll-ind span { font-size: .7rem; color: rgba(255,255,255,.3); letter-spacing: 2px; text-transform: uppercase; }
+.scroll-mouse {
+  width: 24px; height: 38px; border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,.2);
+  display: flex; justify-content: center; padding-top: 6px;
+}
+.scroll-mouse::after {
+  content: '';
+  width: 4px; height: 8px; border-radius: 2px;
+  background: var(--gold2);
+  animation: scrollDown 1.8s ease-in-out infinite;
+}
+@keyframes scrollDown { 0%,100%{transform:translateY(0);opacity:1;} 75%{transform:translateY(10px);opacity:0;} }
+
+/* ============================================================
+   MARQUEE DIVIDER
+   ============================================================ */
+.marquee-divider {
+  background: var(--ink2);
+  border-top: 1px solid rgba(200,146,42,.15);
+  border-bottom: 1px solid rgba(200,146,42,.15);
+  padding: 16px 0; overflow: hidden;
+}
+.marquee-track {
+  display: flex; gap: 0;
+  animation: marquee2 35s linear infinite;
+  white-space: nowrap;
+}
+.marquee-track .item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 0 32px;
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.4rem; color: rgba(200,146,42,.5);
+}
+.marquee-track .item-sep { color: rgba(200,146,42,.25); font-size: 1rem; }
+@keyframes marquee2 { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+/* ============================================================
+   SECTION COMMONS
+   ============================================================ */
+section { padding: 100px 0; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+.sec-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: .72rem; letter-spacing: 3.5px; text-transform: uppercase;
+  font-weight: 700; color: var(--gold); margin-bottom: 14px;
+}
+.sec-label::before {
+  content: ''; display: block;
+  width: 28px; height: 2px; background: var(--gold); border-radius: 1px;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem; font-weight: 900; line-height: 1.15;
+  color: var(--ink); margin-bottom: 16px;
+}
+.sec-title em { color: var(--gold); font-style: normal; }
+.sec-title.light { color: var(--white); }
+.sec-title.light em { color: var(--gold2); }
+.sec-sub {
+  font-size: 1rem; line-height: 1.85;
+  color: var(--muted); max-width: 560px;
+}
+.sec-sub.light { color: rgba(255,255,255,.6); }
+.sec-header { margin-bottom: 64px; }
+.sec-header.center { text-align: center; }
+.sec-header.center .sec-sub { margin: 0 auto; }
+.sec-header.center .sec-label { justify-content: center; }
+.sec-header.center .sec-label::before { display: none; }
+.sec-header.center .sec-label::after { content: ''; display: block; width: 28px; height: 2px; background: var(--gold); border-radius: 1px; }
+
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+.about { background: var(--white); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.about-visual { position: relative; }
+.about-main-visual {
+  aspect-ratio: 3/4; max-height: 560px;
+  border-radius: var(--r-xl);
+  background: linear-gradient(160deg, var(--ink) 0%, var(--ink2) 40%, var(--ink3) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Scheherazade New', serif;
+  color: rgba(200,146,42,.25); font-size: 8rem;
+  position: relative; overflow: hidden;
+  border: 1px solid rgba(200,146,42,.15);
+}
+.about-main-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(200,146,42,.02) 20px, rgba(200,146,42,.02) 21px);
+}
+.about-float-card {
+  position: absolute; bottom: -24px; right: -32px;
+  background: var(--gold);
+  border-radius: var(--r-md);
+  padding: 20px 24px;
+  box-shadow: 0 20px 60px rgba(200,146,42,.4);
+}
+.about-float-card .val {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 900; color: var(--ink); line-height: 1;
+}
+.about-float-card .lbl { font-size: .75rem; font-weight: 600; color: var(--ink2); margin-top: 4px; }
+
+.about-float-card2 {
+  position: absolute; top: -20px; left: -28px;
+  background: var(--ink);
+  border: 1px solid rgba(200,146,42,.25);
+  border-radius: var(--r-md); padding: 16px 20px;
+  box-shadow: var(--shadow-lg);
+}
+.about-float-card2 .arabic {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.4rem; color: var(--gold2);
+  direction: rtl; display: block; margin-bottom: 6px;
+}
+.about-float-card2 .en { font-size: .72rem; color: rgba(255,255,255,.4); }
+
+.about-content { }
+.about-quote-block {
+  background: linear-gradient(135deg, var(--sand) 0%, var(--sand2) 100%);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: 20px 24px; margin: 28px 0;
+}
+.about-quote-block .arabic-q {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.6rem; color: var(--gold);
+  direction: rtl; margin-bottom: 8px; line-height: 1.6;
+}
+.about-quote-block .trans { color: var(--muted); font-style: italic; font-size: .9rem; }
+.about-quote-block .ref { color: var(--gold); font-size: .78rem; font-weight: 700; margin-top: 6px; }
+.about-p { color: var(--muted); line-height: 1.9; margin-bottom: 16px; }
+.feature-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.feature-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--sand); border: 1px solid var(--sand2);
+  border-radius: 100px; padding: 8px 16px;
+  font-size: .84rem; color: var(--ink2); font-weight: 500;
+}
+.feature-pill .pill-icon { font-size: 1rem; }
+
+/* ============================================================
+   PROGRAMS SECTION
+   ============================================================ */
+.programs { background: var(--sand); }
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.prog-card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+  position: relative;
+}
+.prog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(200,146,42,.25);
+}
+.prog-card-banner {
+  height: 140px;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.pb-1 { background: linear-gradient(135deg, #0B1A12 0%, #1A3326 100%); }
+.pb-2 { background: linear-gradient(135deg, #1A2C4E 0%, #243B63 100%); }
+.pb-3 { background: linear-gradient(135deg, #3D1A1A 0%, #5C2020 100%); }
+.pb-4 { background: linear-gradient(135deg, #1A3D2A 0%, #265C3E 100%); }
+.pb-5 { background: linear-gradient(135deg, #2E1A3D 0%, #442B5C 100%); }
+.pb-6 { background: linear-gradient(135deg, #1A2A3D 0%, #203550 100%); }
+
+.prog-banner-emoji { font-size: 3.5rem; position: relative; z-index: 1; filter: drop-shadow(0 4px 12px rgba(0,0,0,.4)); }
+.prog-banner-pattern {
+  position: absolute; inset: 0; opacity: .06;
+  background-image: repeating-linear-gradient(60deg, rgba(255,255,255,.5) 0, rgba(255,255,255,.5) 1px, transparent 1px, transparent 20px);
+}
+.prog-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(200,146,42,.9); color: var(--ink);
+  font-size: .68rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
+}
+.prog-card-body { padding: 24px; }
+.prog-card-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 10px;
+}
+.prog-card-body p { font-size: .86rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+.prog-meta { display: flex; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+.prog-meta-item { font-size: .75rem; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+.prog-meta-item strong { color: var(--emerald); }
+.prog-card-footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(0,0,0,.06);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.prog-card-footer .price { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink); }
+.prog-card-footer .price span { font-size: .75rem; color: var(--muted); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+.prog-enroll {
+  background: var(--ink); color: var(--gold2);
+  border: none; border-radius: var(--r-sm);
+  padding: 8px 16px; font-size: .8rem; font-weight: 600;
+  cursor: pointer; transition: all .25s;
+}
+.prog-enroll:hover { background: var(--gold); color: var(--ink); }
+
+/* ============================================================
+   HADITH SECTION
+   ============================================================ */
+.hadith-sec {
+  background: var(--ink);
+  position: relative; overflow: hidden;
+}
+.hadith-bg-text {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: 'Scheherazade New', serif;
+  font-size: 20rem; color: rgba(255,255,255,.015);
+  pointer-events: none; user-select: none;
+  white-space: nowrap;
+}
+.hadith-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.hadith-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(200,146,42,.15);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  transition: background .3s, border-color .3s, transform .3s var(--ease);
+  position: relative; overflow: hidden;
+}
+.hadith-card::before {
+  content: '"';
+  position: absolute; top: -10px; right: 20px;
+  font-family: Georgia, serif; font-size: 8rem;
+  color: rgba(200,146,42,.07); line-height: 1;
+  pointer-events: none;
+}
+.hadith-card:hover {
+  background: rgba(200,146,42,.06);
+  border-color: rgba(200,146,42,.35);
+  transform: translateY(-6px);
+}
+.hadith-number {
+  font-family: 'Playfair Display', serif;
+  font-size: .72rem; color: var(--gold);
+  letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.hadith-number::before { content: ''; flex: 1; max-width: 28px; height: 1px; background: var(--gold); display: block; }
+.hadith-arabic-text {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.5rem; color: var(--gold2);
+  direction: rtl; text-align: right;
+  line-height: 1.9; margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(200,146,42,.15);
+}
+.hadith-trans { color: rgba(255,255,255,.7); font-size: .88rem; line-height: 1.8; font-style: italic; margin-bottom: 14px; }
+.hadith-ref {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .72rem; color: var(--gold); font-weight: 700;
+}
+.hadith-ref::before { content: '—'; color: rgba(200,146,42,.4); }
+
+/* ============================================================
+   EVENTS SECTION
+   ============================================================ */
+.events { background: var(--white); }
+.events-layout {
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  gap: 48px;
+}
+.events-upcoming h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; color: var(--ink); margin-bottom: 24px;
+}
+.event-list { display: flex; flex-direction: column; gap: 16px; }
+.event-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px;
+  border: 1px solid rgba(0,0,0,.07);
+  border-radius: var(--r-md);
+  transition: all .25s;
+  cursor: pointer;
+}
+.event-item:hover { border-color: var(--gold); background: var(--sand); }
+.event-date-box {
+  width: 56px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%);
+  border-radius: var(--r-sm);
+  padding: 10px 8px; text-align: center;
+}
+.event-date-box .eday {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 900; color: var(--gold2); line-height: 1;
+}
+.event-date-box .emon { font-size: .6rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+.event-info h4 { font-size: .92rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.event-info p { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+.event-chips { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.event-chip {
+  font-size: .65rem; font-weight: 700; letter-spacing: .5px;
+  text-transform: uppercase; padding: 3px 8px; border-radius: 4px;
+}
+.ec-intl { background: rgba(13,122,78,.1); color: var(--emerald); }
+.ec-online { background: rgba(52,152,219,.1); color: #3498db; }
+.ec-local { background: rgba(200,146,42,.1); color: var(--gold); }
+.ec-charity { background: rgba(231,76,60,.1); color: #e74c3c; }
+
+.events-featured { }
+.events-featured h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--ink); margin-bottom: 24px; }
+.featured-event-card {
+  background: linear-gradient(160deg, var(--ink) 0%, var(--ink2) 100%);
+  border-radius: var(--r-xl);
+  overflow: hidden; position: relative;
+}
+.fec-top {
+  padding: 36px; position: relative;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.fec-tag {
+  display: inline-block; background: var(--gold);
+  color: var(--ink); font-size: .68rem; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 4px; margin-bottom: 16px;
+}
+.fec-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 12px; }
+.fec-desc { color: rgba(255,255,255,.6); font-size: .88rem; line-height: 1.7; }
+.fec-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 24px 36px; }
+.fec-meta-item { }
+.fec-meta-item .fml { font-size: .68rem; color: rgba(255,255,255,.35); letter-spacing: 2px; text-transform: uppercase; }
+.fec-meta-item .fmv { font-size: .9rem; color: rgba(255,255,255,.85); margin-top: 4px; }
+.fec-bottom { padding: 20px 36px 28px; display: flex; gap: 12px; }
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gallery { background: var(--sand); }
+.gallery-mosaic {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 16px;
+}
+.gal-item {
+  border-radius: var(--r-md);
+  overflow: hidden; position: relative;
+  background: var(--ink2);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .3s var(--ease);
+}
+.gal-item:hover { transform: scale(1.03); }
+.gal-item:hover .gal-overlay { opacity: 1; }
+.gal-item.span2 { grid-column: span 2; }
+.gal-item.rowspan2 { grid-row: span 2; }
+.gal-content {
+  font-size: 4rem; opacity: .35;
+  font-family: 'Scheherazade New', serif; color: var(--gold);
+  user-select: none; pointer-events: none;
+}
+.gal-item.span2.rowspan2 .gal-content { font-size: 7rem; }
+.gal-overlay {
+  position: absolute; inset: 0;
+  background: rgba(11,26,18,.7);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .3s;
+  backdrop-filter: blur(4px);
+}
+.gal-overlay span {
+  color: var(--gold2); font-size: .82rem; font-weight: 600;
+  letter-spacing: 1px;
+}
+.gal-overlay .gal-icon { font-size: 1.6rem; margin-bottom: 8px; }
+
+/* ============================================================
+   DONATE SECTION
+   ============================================================ */
+.donate { background: var(--ink); position: relative; overflow: hidden; }
+.donate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.donate-arabic-bg {
+  position: absolute; top: 0; right: 0;
+  font-family: 'Scheherazade New', serif;
+  font-size: 24rem; line-height: 1; color: rgba(200,146,42,.03);
+  pointer-events: none; user-select: none;
+}
+.donate-left { position: relative; z-index: 1; }
+.donate-verse {
+  background: rgba(200,146,42,.08);
+  border: 1px solid rgba(200,146,42,.2);
+  border-radius: var(--r-md);
+  padding: 24px; margin-top: 28px;
+}
+.donate-verse .arabic {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.6rem; color: var(--gold2);
+  direction: rtl; line-height: 1.8; margin-bottom: 10px;
+}
+.donate-verse .trans { font-size: .86rem; color: rgba(255,255,255,.6); font-style: italic; }
+.donate-verse .ref { font-size: .72rem; color: var(--gold); font-weight: 700; margin-top: 8px; }
+
+.impact-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.impact-stat {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--r-md); padding: 20px;
+  text-align: center;
+}
+.impact-stat .is-icon { font-size: 1.8rem; margin-bottom: 8px; }
+.impact-stat .is-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 900; color: var(--gold2); display: block;
+}
+.impact-stat .is-lbl { font-size: .75rem; color: rgba(255,255,255,.4); margin-top: 4px; display: block; }
+
+.donate-form-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(200,146,42,.2);
+  border-radius: var(--r-xl);
+  overflow: hidden; position: relative; z-index: 1;
+}
+.dfc-header {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+  padding: 28px 32px;
+}
+.dfc-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; color: var(--ink); font-weight: 900;
+}
+.dfc-header p { font-size: .82rem; color: var(--ink2); margin-top: 4px; }
+
+.dfc-body { padding: 32px; }
+.amount-selector { margin-bottom: 20px; }
+.amount-selector label { font-size: .75rem; color: rgba(255,255,255,.5); letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+.amount-buttons { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 12px; }
+.amount-btn2 {
+  padding: 11px 8px; border-radius: var(--r-sm);
+  background: rgba(255,255,255,.06);
+  border: 1.5px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.7); font-size: .88rem; font-weight: 600;
+  cursor: pointer; transition: all .2s; text-align: center;
+}
+.amount-btn2:hover, .amount-btn2.sel { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.custom-amount {
+  width: 100%; padding: 12px 16px; border-radius: var(--r-sm);
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  color: var(--white); font-size: .92rem; outline: none;
+  transition: border-color .2s;
+}
+.custom-amount:focus { border-color: var(--gold); }
+.custom-amount::placeholder { color: rgba(255,255,255,.3); }
+
+.form-field { margin-bottom: 16px; }
+.form-field label { font-size: .72rem; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 7px; }
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%; padding: 12px 16px; border-radius: var(--r-sm);
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  color: var(--white); font-size: .9rem; outline: none;
+  transition: border-color .2s;
+  appearance: none;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--gold); }
+.form-field input::placeholder { color: rgba(255,255,255,.3); }
+.form-field select option { background: var(--ink2); color: var(--white); }
+.form-field textarea { height: 90px; resize: vertical; }
+.form-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.progress-section { margin: 20px 0; }
+.prog-header { display: flex; justify-content: space-between; font-size: .75rem; color: rgba(255,255,255,.5); margin-bottom: 8px; }
+.prog-bar { height: 6px; background: rgba(255,255,255,.1); border-radius: 3px; overflow: hidden; }
+.prog-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold2)); border-radius: 3px; width: 72%; }
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonials { background: var(--sand); }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.testi-card {
+  background: var(--white); border-radius: var(--r-lg);
+  padding: 32px; border: 1px solid rgba(0,0,0,.06);
+  transition: all .3s var(--ease);
+  position: relative;
+}
+.testi-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(200,146,42,.2); }
+.testi-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 16px; }
+.testi-text { color: var(--muted); font-size: .9rem; line-height: 1.8; font-style: italic; margin-bottom: 24px; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+  color: var(--ink); flex-shrink: 0;
+}
+.testi-author-info strong { display: block; font-size: .88rem; color: var(--ink); }
+.testi-author-info span { font-size: .75rem; color: var(--muted); }
+
+/* ============================================================
+   NEWSLETTER
+   ============================================================ */
+.newsletter {
+  background: var(--ink2);
+  padding: 80px 0;
+  border-top: 1px solid rgba(200,146,42,.15);
+  border-bottom: 1px solid rgba(200,146,42,.15);
+}
+.newsletter-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.nl-form { display: flex; gap: 12px; }
+.nl-input {
+  flex: 1; padding: 14px 20px; border-radius: var(--r-sm);
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  color: var(--white); font-size: .92rem; outline: none;
+  transition: border-color .2s;
+}
+.nl-input:focus { border-color: var(--gold); }
+.nl-input::placeholder { color: rgba(255,255,255,.3); }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact { background: var(--pearl); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; }
+.contact-left { }
+.contact-info-cards { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+.cic {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px;
+  background: var(--white); border: 1px solid rgba(0,0,0,.07);
+  border-radius: var(--r-md); transition: all .25s;
+}
+.cic:hover { border-color: var(--gold); transform: translateX(4px); }
+.cic-icon {
+  width: 42px; height: 42px; border-radius: var(--r-sm); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.ci1 { background: rgba(13,122,78,.1); }
+.ci2 { background: rgba(200,146,42,.1); }
+.ci3 { background: rgba(52,152,219,.1); }
+.ci4 { background: rgba(24,119,242,.1); }
+.ci5 { background: rgba(10,102,194,.1); }
+.ci6 { background: rgba(37,211,102,.1); }
+.cic-label { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; }
+.cic-val { font-size: .9rem; color: var(--ink); margin-top: 2px; font-weight: 500; }
+.cic-val a { color: var(--emerald); }
+.cic-val a:hover { text-decoration: underline; }
+
+.contact-form-card {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: var(--r-xl);
+  padding: 44px;
+  box-shadow: var(--shadow-sm);
+}
+.contact-form-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem; color: var(--ink); margin-bottom: 8px;
+}
+.contact-form-card p { color: var(--muted); font-size: .9rem; margin-bottom: 32px; }
+.cf-input {
+  width: 100%; padding: 13px 16px; border-radius: var(--r-sm);
+  border: 1px solid rgba(0,0,0,.1); background: var(--sand);
+  font-size: .9rem; color: var(--ink); outline: none;
+  transition: border-color .25s, background .25s;
+}
+.cf-input:focus { border-color: var(--gold); background: var(--white); }
+.cf-input::placeholder { color: var(--muted); }
+.cf-label { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; display: block; margin-bottom: 7px; }
+.cf-group { margin-bottom: 18px; }
+.cf-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cf-textarea { height: 130px; resize: vertical; }
+select.cf-input { appearance: none; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(200,146,42,.15);
+}
+.footer-top { padding: 80px 0 48px; }
+.footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 48px; }
+.footer-brand { }
+.fb-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.fb-logo-em {
+  width: 44px; height: 44px; background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Scheherazade New', serif; font-size: 1.4rem; color: var(--ink);
+}
+.fb-logo-text .l1 { font-family: 'Playfair Display', serif; font-size: .95rem; font-weight: 700; color: var(--gold2); }
+.fb-logo-text .l2 { font-size: .65rem; color: rgba(255,255,255,.35); letter-spacing: 2px; text-transform: uppercase; }
+.footer-brand p { color: rgba(255,255,255,.5); font-size: .85rem; line-height: 1.8; margin-bottom: 22px; max-width: 320px; }
+.footer-social-row { display: flex; gap: 10px; }
+.fsoc {
+  width: 36px; height: 36px; border-radius: var(--r-sm);
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.5); font-size: .85rem; transition: all .25s;
+}
+.fsoc:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+.footer-col h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: .95rem; color: var(--gold3); margin-bottom: 20px; font-weight: 700;
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a {
+  color: rgba(255,255,255,.5); font-size: .85rem;
+  display: flex; align-items: center; gap: 6px;
+  transition: color .2s, padding .2s;
+}
+.footer-col ul li a:hover { color: var(--gold2); padding-left: 4px; }
+.footer-col ul li a::before { content: '›'; color: var(--gold); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 24px 0;
+}
+.footer-bottom-inner {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
+}
+.footer-bottom-inner p { color: rgba(255,255,255,.3); font-size: .8rem; }
+.footer-bottom-arabic {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.3rem; color: rgba(200,146,42,.35); direction: rtl;
+}
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+.btt {
+  position: fixed; bottom: 28px; right: 28px; z-index: 500;
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--gold);
+  color: var(--ink); font-size: 1.1rem; font-weight: 700;
+  border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(200,146,42,.4);
+  display: flex; align-items: center; justify-content: center;
+  transition: all .3s var(--ease);
+  opacity: 0; visibility: hidden; transform: translateY(12px);
+}
+.btt.show { opacity: 1; visibility: visible; transform: none; }
+.btt:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(200,146,42,.5); }
+
+/* ============================================================
+   NOTIFICATION TOAST
+   ============================================================ */
+.toast {
+  position: fixed; top: 88px; right: 28px; z-index: 9000;
+  background: var(--ink2); border: 1px solid rgba(200,146,42,.3);
+  border-radius: var(--r-md);
+  padding: 16px 20px; min-width: 280px; max-width: 340px;
+  box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 12px;
+  transform: translateX(calc(100% + 40px));
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.toast.show { transform: translateX(0); }
+.toast-icon { font-size: 1.2rem; flex-shrink: 0; }
+.toast-msg { color: rgba(255,255,255,.85); font-size: .88rem; line-height: 1.4; }
+
+/* ============================================================
+   LOGIN MODAL
+   ============================================================ */
+#login-modal {
+  display: none; position: fixed; inset: 0; z-index: 8000;
+  background: rgba(0,0,0,.75); backdrop-filter: blur(16px);
+  align-items: center; justify-content: center;
+}
+#login-modal.open { display: flex; }
+.login-card {
+  width: 440px; max-width: 95vw;
+  background: var(--ink2); border: 1px solid rgba(200,146,42,.25);
+  border-radius: var(--r-xl); overflow: hidden;
+  animation: fadeUp .4s var(--ease) both;
+  position: relative;
+}
+.login-card-top {
+  background: linear-gradient(160deg, var(--ink) 0%, var(--ink2) 100%);
+  padding: 36px 40px 28px; text-align: center;
+  border-bottom: 1px solid rgba(200,146,42,.15);
+  position: relative;
+}
+.login-logo {
+  width: 64px; height: 64px; margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Scheherazade New', serif; font-size: 2rem; color: var(--ink);
+  box-shadow: 0 8px 24px rgba(200,146,42,.4);
+}
+.login-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 4px; }
+.login-sub { color: rgba(255,255,255,.4); font-size: .8rem; }
+.login-tabs {
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: rgba(255,255,255,.04); border-radius: 10px; margin-top: 20px;
+  overflow: hidden;
+}
+.ltab {
+  padding: 10px; text-align: center; color: rgba(255,255,255,.4);
+  font-size: .85rem; font-weight: 600; cursor: pointer;
+  transition: all .25s; border: none; background: none;
+}
+.ltab.active { background: var(--gold); color: var(--ink); border-radius: 10px; }
+.login-body { padding: 32px 40px; }
+.lf { margin-bottom: 16px; }
+.lf label { display: block; font-size: .7rem; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 7px; }
+.lf input {
+  width: 100%; padding: 12px 16px; border-radius: var(--r-sm);
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+  color: var(--white); font-size: .9rem; outline: none; transition: border .2s;
+}
+.lf input:focus { border-color: var(--gold); }
+.lf input::placeholder { color: rgba(255,255,255,.25); }
+.login-error {
+  background: rgba(231,76,60,.1); border: 1px solid rgba(231,76,60,.3);
+  color: #ff8080; font-size: .82rem; padding: 10px 14px;
+  border-radius: var(--r-sm); margin-bottom: 16px; display: none;
+}
+.login-forgot { text-align: right; margin-bottom: 20px; }
+.login-forgot a { color: var(--gold); font-size: .78rem; }
+.login-demo { text-align: center; color: rgba(255,255,255,.3); font-size: .72rem; margin-top: 14px; }
+.login-demo b { color: var(--gold2); }
+.login-close-btn {
+  position: absolute; top: 16px; right: 20px;
+  background: rgba(255,255,255,.08); border: none; border-radius: 8px;
+  color: rgba(255,255,255,.6); width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1rem; transition: all .2s;
+}
+.login-close-btn:hover { background: rgba(255,0,0,.2); color: #ff8080; }
+#register-section { display: none; }
+
+/* ============================================================
+   ADMIN PANEL
+   ============================================================ */
+#admin-panel {
+  display: none; position: fixed; inset: 0; z-index: 7000;
+  background: #0a0a0a;
+}
+#admin-panel.open { display: flex; }
+
+.adm-sidebar {
+  width: 256px; flex-shrink: 0;
+  background: #111;
+  border-right: 1px solid #1f1f1f;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.adm-sidebar-logo {
+  padding: 24px 20px;
+  border-bottom: 1px solid #1f1f1f;
+  display: flex; align-items: center; gap: 10px;
+}
+.adm-logo-em {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Scheherazade New', serif; font-size: 1.2rem; color: var(--ink);
+}
+.adm-logo-text .al1 { font-family: 'Playfair Display', serif; font-size: .85rem; color: var(--gold2); font-weight: 700; }
+.adm-logo-text .al2 { font-size: .6rem; color: #555; letter-spacing: 2px; text-transform: uppercase; margin-top: 1px; }
+
+.adm-nav { padding: 12px 10px; flex: 1; }
+.adm-nav-section { margin-bottom: 24px; }
+.adm-nav-section-label { font-size: .6rem; color: #444; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; padding: 0 10px; margin-bottom: 8px; }
+.adm-nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px; margin-bottom: 2px;
+  color: #666; font-size: .86rem; cursor: pointer;
+  transition: all .2s; border: none; background: none; width: 100%; text-align: left;
+}
+.adm-nav-item:hover { background: #1a1a1a; color: #ccc; }
+.adm-nav-item.act { background: rgba(200,146,42,.1); color: var(--gold2); }
+.adm-nav-item .ni-icon { font-size: 1rem; flex-shrink: 0; width: 20px; text-align: center; }
+.adm-nav-item .ni-badge {
+  margin-left: auto; background: var(--gold); color: var(--ink);
+  font-size: .6rem; font-weight: 800; padding: 2px 6px; border-radius: 100px;
+}
+
+.adm-sidebar-bottom {
+  padding: 16px 10px;
+  border-top: 1px solid #1f1f1f;
+}
+
+.adm-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.adm-topbar {
+  height: 60px; background: #111; border-bottom: 1px solid #1f1f1f;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; flex-shrink: 0;
+}
+.adm-topbar-left { display: flex; align-items: center; gap: 16px; }
+.adm-topbar h2 { font-family: 'Playfair Display', serif; color: #ccc; font-size: 1rem; }
+.adm-topbar-right { display: flex; align-items: center; gap: 12px; }
+.adm-user-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(200,146,42,.08); border: 1px solid rgba(200,146,42,.2);
+  padding: 6px 12px; border-radius: 100px; color: var(--gold2); font-size: .82rem;
+}
+.adm-close-btn {
+  background: rgba(231,76,60,.1); border: 1px solid rgba(231,76,60,.25);
+  color: #ff6b6b; padding: 7px 16px; border-radius: 8px;
+  font-size: .8rem; font-weight: 700; cursor: pointer; transition: all .2s;
+}
+.adm-close-btn:hover { background: rgba(231,76,60,.25); }
+
+.adm-content { flex: 1; overflow-y: auto; padding: 28px; }
+.adm-section { display: none; }
+.adm-section.act { display: block; }
+
+/* Admin Stat Cards */
+.adm-stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 24px; }
+.adm-stat {
+  background: #141414; border: 1px solid #222; border-radius: 12px;
+  padding: 20px; transition: border-color .2s;
+}
+.adm-stat:hover { border-color: rgba(200,146,42,.3); }
+.adm-stat-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.adm-stat-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: .95rem; }
+.adm-stat-change { font-size: .72rem; font-weight: 700; }
+.adm-stat-change.up { color: #27ae60; }
+.adm-stat-change.dn { color: #e74c3c; }
+.adm-stat .sv {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; color: #e0e0e0; font-weight: 900; display: block;
+}
+.adm-stat .sl { font-size: .73rem; color: #555; margin-top: 3px; display: block; }
+
+/* Admin Table */
+.adm-table-wrap {
+  background: #141414; border: 1px solid #1f1f1f; border-radius: 12px; overflow: hidden;
+  margin-bottom: 20px;
+}
+.adm-table-header {
+  padding: 16px 20px; border-bottom: 1px solid #1f1f1f;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.adm-table-header h3 { color: #ccc; font-size: .92rem; font-weight: 600; }
+table.adm-tbl { width: 100%; border-collapse: collapse; }
+table.adm-tbl thead th {
+  padding: 11px 18px; text-align: left;
+  font-size: .7rem; color: #555; text-transform: uppercase; letter-spacing: 1.5px;
+  background: #111; border-bottom: 1px solid #1f1f1f;
+}
+table.adm-tbl tbody td {
+  padding: 12px 18px; border-bottom: 1px solid #1a1a1a;
+  font-size: .84rem; color: #aaa;
+}
+table.adm-tbl tbody tr:last-child td { border-bottom: none; }
+table.adm-tbl tbody tr:hover td { background: #181818; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: .68rem; font-weight: 700; letter-spacing: .5px; }
+.badge-green { background: rgba(39,174,96,.12); color: #27ae60; }
+.badge-yellow { background: rgba(241,196,15,.12); color: #f1c40f; }
+.badge-red { background: rgba(231,76,60,.12); color: #e74c3c; }
+.badge-blue { background: rgba(52,152,219,.12); color: #3498db; }
+.adm-action-btn {
+  padding: 5px 12px; border-radius: 6px; font-size: .72rem; font-weight: 600;
+  cursor: pointer; border: none; transition: all .2s; margin-right: 4px;
+}
+.aab-primary { background: rgba(200,146,42,.15); color: var(--gold2); border: 1px solid rgba(200,146,42,.25); }
+.aab-primary:hover { background: var(--gold); color: var(--ink); }
+.aab-danger { background: rgba(231,76,60,.1); color: #ff6b6b; border: 1px solid rgba(231,76,60,.2); }
+.aab-danger:hover { background: rgba(231,76,60,.2); }
+.aab-green { background: rgba(39,174,96,.1); color: #27ae60; border: 1px solid rgba(39,174,96,.2); }
+.aab-green:hover { background: rgba(39,174,96,.2); }
+
+/* Admin Form */
+.adm-form-card {
+  background: #141414; border: 1px solid #1f1f1f;
+  border-radius: 12px; padding: 24px; margin-bottom: 20px;
+}
+.adm-form-card h3 { color: #ccc; font-size: .95rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #222; }
+.adm-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.adm-f { margin-bottom: 14px; }
+.adm-f label { display: block; font-size: .68rem; color: #555; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 7px; }
+.adm-f input, .adm-f textarea, .adm-f select {
+  width: 100%; padding: 10px 14px; border-radius: 8px;
+  background: #111; border: 1px solid #2a2a2a; color: #ccc;
+  font-size: .88rem; outline: none; transition: border .2s;
+}
+.adm-f input:focus, .adm-f textarea:focus { border-color: var(--gold); }
+.adm-f textarea { height: 90px; resize: vertical; }
+.adm-f input[type=checkbox] { width: auto; }
+.adm-sec-title { color: #ddd; font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 20px; }
+
+/* Chart-like bar */
+.adm-chart { background: #141414; border: 1px solid #1f1f1f; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+.adm-chart h3 { color: #aaa; font-size: .88rem; margin-bottom: 20px; }
+.chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 120px; }
+.chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.chart-bar { width: 100%; border-radius: 4px 4px 0 0; background: rgba(200,146,42,.4); transition: background .2s; cursor: pointer; }
+.chart-bar:hover { background: var(--gold); }
+.chart-label { font-size: .65rem; color: #444; text-align: center; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .adm-stat-row { grid-template-columns: 1fr 1fr; }
+  .programs-grid { grid-template-columns: 1fr 1fr; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+  .hadith-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .events-layout { grid-template-columns: 1fr; }
+  .donate-grid { grid-template-columns: 1fr; }
+  .newsletter-inner { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .navbar { padding: 0 24px; }
+  .nav-center { display: none; }
+  .hamburger { display: flex; }
+  .container { padding: 0 24px; }
+  .hero-inner { padding: 60px 24px; }
+  .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gal-item.span2 { grid-column: span 1; }
+  .gal-item.rowspan2 { grid-row: span 1; }
+}
+@media (max-width: 640px) {
+  .programs-grid { grid-template-columns: 1fr; }
+  .hadith-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .adm-stat-row { grid-template-columns: 1fr; }
+  .adm-sidebar { width: 200px; }
+  .sec-title { font-size: 2rem; }
+  .hero-title { font-size: 2.4rem; }
+  .adm-form-grid { grid-template-columns: 1fr; }
+  .cf-two { grid-template-columns: 1fr; }
+  .form-two { grid-template-columns: 1fr; }
+  .nl-form { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="pre-arabic">الشيخ حمزة الحسن</div>
+  <div class="pre-bar-wrap"><div class="pre-bar"></div></div>
+  <div class="pre-label">Da'wah Hadith Trust</div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="toast-icon" id="toast-icon">🌙</span>
+  <span class="toast-msg" id="toast-msg">Welcome!</span>
+</div>
+
+<!-- Back to Top -->
+<button class="btt" id="btt" onclick="scrollToTop()">↑</button>
+
+<!-- ============================================================
+     ANNOUNCEMENT RIBBON
+     ============================================================ -->
+<div class="ribbon">
+  <div class="ribbon-track" id="ribbon-track">
+    <span>🌙 Assalamu Alaikum — Welcome to Da'wah Hadith Trust</span>
+    <span>📚 New Hadith Sciences Program — Enrollment Open</span>
+    <span>🌍 Serving 40+ Countries Globally</span>
+    <span>الشيخ Hamza Al Hassan — Founder & Director General</span>
+    <span>📅 International Hadith Conference — March 2026</span>
+    <span>🤲 Support Our Mission — Donate Today</span>
+    <span>📞 WhatsApp: 01317770255</span>
+    <span>✦ بَلِّغُوا عَنِّي وَلَوْ آيَةً ✦</span>
+    <!-- Duplicate for seamless loop -->
+    <span>🌙 Assalamu Alaikum — Welcome to Da'wah Hadith Trust</span>
+    <span>📚 New Hadith Sciences Program — Enrollment Open</span>
+    <span>🌍 Serving 40+ Countries Globally</span>
+    <span>الشيخ Hamza Al Hassan — Founder & Director General</span>
+    <span>📅 International Hadith Conference — March 2026</span>
+    <span>🤲 Support Our Mission — Donate Today</span>
+    <span>📞 WhatsApp: 01317770255</span>
+    <span>✦ بَلِّغُوا عَنِّي وَلَوْ آيَةً ✦</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-emblem">د</div>
+    <div class="nav-logo-text">
+      <div class="t1">Da'wah Hadith Trust</div>
+      <div class="t2">Global Islamic Education</div>
+    </div>
+  </div>
+
+  <div class="nav-center">
+    <a href="#home" class="nav-link active">Home</a>
+    <div class="nav-has-sub">
+      <a href="#about" class="nav-link">About ▾</a>
+      <div class="nav-sub">
+        <a href="#about"><span class="sub-icon">🕌</span> Our Mission</a>
+        <a href="#about"><span class="sub-icon">👤</span> Sheikh Profile</a>
+        <a href="#about"><span class="sub-icon">📜</span> History</a>
+        <a href="#about"><span class="sub-icon">👥</span> Our Team</a>
+      </div>
+    </div>
+    <div class="nav-has-sub">
+      <a href="#programs" class="nav-link">Programs ▾</a>
+      <div class="nav-sub">
+        <a href="#programs"><span class="sub-icon">📖</span> Hadith Sciences</a>
+        <a href="#programs"><span class="sub-icon">🌍</span> Da'wah Training</a>
+        <a href="#programs"><span class="sub-icon">💻</span> Online Courses</a>
+        <a href="#programs"><span class="sub-icon">👦</span> Youth Program</a>
+        <a href="#programs"><span class="sub-icon">🎓</span> Ijaaza Program</a>
+      </div>
+    </div>
+    <a href="#hadith" class="nav-link">Hadith</a>
+    <a href="#events" class="nav-link">Events</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+
+  <div class="nav-right">
+    <a href="#donate" class="nav-btn outline">🤲 Donate</a>
+    <button class="nav-btn filled" onclick="openLogin()">⚙ Login</button>
+  </div>
+
+  <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-close" onclick="toggleMobile()">✕</button>
+  <a href="#home" onclick="toggleMobile()">Home</a>
+  <a href="#about" onclick="toggleMobile()">About</a>
+  <a href="#programs" onclick="toggleMobile()">Programs</a>
+  <a href="#hadith" onclick="toggleMobile()">Hadith</a>
+  <a href="#events" onclick="toggleMobile()">Events</a>
+  <a href="#gallery" onclick="toggleMobile()">Gallery</a>
+  <a href="#donate" onclick="toggleMobile()">Donate</a>
+  <a href="#contact" onclick="toggleMobile()">Contact</a>
+  <a href="javascript:openLogin();toggleMobile();" style="color:var(--gold2)">Admin / Login</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-geo">
+    <div class="geo-circle gc1"></div>
+    <div class="geo-circle gc2"></div>
+    <div class="geo-circle gc3"></div>
+  </div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="dot">✦</div>
+        <span>Global Islamic Trust · Since 2008</span>
+      </div>
+      <div class="hero-arabic-big">دعوة الحديث النبوي</div>
+      <h1 class="hero-title">
+        Da'wah <em>Hadith</em><br>
+        <span class="line2">Trust — Globally</span>
+      </h1>
+      <p class="hero-desc">Preserving and spreading the authentic Sunnah of the Prophet Muhammad ﷺ through rigorous Hadith education, global Da'wah outreach, and community empowerment — rooted in Bangladesh, reaching the world.</p>
+      <div class="hero-actions">
+        <a href="#programs" class="btn btn-gold">📚 Explore Programs</a>
+        <a href="#donate" class="btn btn-ghost">🤲 Support Us</a>
+        <a href="https://wa.me/8801317770255" target="_blank" class="btn btn-emerald">💬 WhatsApp</a>
+      </div>
+      <div class="hero-numbers">
+        <div class="hero-num"><span class="val">15K+</span><span class="lbl">Students</span></div>
+        <div class="hero-num"><span class="val">40+</span><span class="lbl">Countries</span></div>
+        <div class="hero-num"><span class="val">18 Yrs</span><span class="lbl">Active</span></div>
+        <div class="hero-num"><span class="val">24+</span><span class="lbl">Programs</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="sheikh-card">
+        <div class="sheikh-card-top">
+          <div class="sheikh-avatar-ring">
+            <div class="sheikh-avatar-inner"><img src="1000036178.jpg" alt=""></div>
+            <div class="sheikh-verified">✓</div>
+          </div>
+          <div class="sheikh-name">
+            Sheikh Hamza Al Hassan
+            <span class="arabic">الشيخ حمزة الحسن</span>
+          </div>
+          <div class="sheikh-role">Founder & Director General</div>
+          <div class="sheikh-tags">
+            <span class="sheikh-tag">Muhaddith</span>
+            <span class="sheikh-tag">Da'ee</span>
+            <span class="sheikh-tag">Educator</span>
+            <span class="sheikh-tag">Bangladesh</span>
+          </div>
+        </div>
+        <div class="sheikh-card-body">
+          <div class="contact-rows">
+            <div class="contact-row">
+              <div class="contact-row-icon ci-wa">📱</div>
+              <div class="contact-row-info">
+                <div class="cr-label">WhatsApp</div>
+                <div class="cr-val"><a href="https://wa.me/8801317770255" target="_blank">01317770255</a></div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-row-icon ci-email">✉️</div>
+              <div class="contact-row-info">
+                <div class="cr-label">Email</div>
+                <div class="cr-val"><a href="mailto:hamzahasanadnan@gmail.com">hamzahasanadnan@gmail.com</a></div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-row-icon ci-location">📍</div>
+              <div class="contact-row-info">
+                <div class="cr-label">Location</div>
+                <div class="cr-val">Dhaka & Sirajganj, Bangladesh</div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-row-icon ci-fb">🌐</div>
+              <div class="contact-row-info">
+                <div class="cr-label">Facebook</div>
+                <div class="cr-val"><a href="https://www.facebook.com/share/1AxFyGWyDk/" target="_blank">Da'wah Hadith Trust Page</a></div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-row-icon ci-li">💼</div>
+              <div class="contact-row-info">
+                <div class="cr-label">LinkedIn</div>
+                <div class="cr-val"><a href="https://www.linkedin.com/in/ranju-hasan-khan-5482952ba" target="_blank">Sheikh Hamza Al Hassan</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sheikh-card-footer">
+          <a href="https://wa.me/8801317770255" target="_blank" class="btn btn-emerald btn-sm" style="flex:1;justify-content:center">💬 WhatsApp Now</a>
+          <a href="mailto:hamzahasanadnan@gmail.com" class="btn btn-ghost btn-sm" style="flex:1;justify-content:center;color:white">✉ Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-ind">
+    <span>Scroll</span>
+    <div class="scroll-mouse"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MARQUEE DIVIDER
+     ============================================================ -->
+<div class="marquee-divider">
+  <div class="marquee-track" id="mq-track">
+    <div class="item">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ <span class="item-sep">✦</span></div>
+    <div class="item">إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ <span class="item-sep">✦</span></div>
+    <div class="item">طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ <span class="item-sep">✦</span></div>
+    <div class="item">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ <span class="item-sep">✦</span></div>
+    <div class="item">الدِّينُ النَّصِيحَةُ <span class="item-sep">✦</span></div>
+    <div class="item">بَلِّغُوا عَنِّي وَلَوْ آيَةً <span class="item-sep">✦</span></div>
+    <!-- Duplicate -->
+    <div class="item">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ <span class="item-sep">✦</span></div>
+    <div class="item">إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ <span class="item-sep">✦</span></div>
+    <div class="item">طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ <span class="item-sep">✦</span></div>
+    <div class="item">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ <span class="item-sep">✦</span></div>
+    <div class="item">الدِّينُ النَّصِيحَةُ <span class="item-sep">✦</span></div>
+    <div class="item">بَلِّغُوا عَنِّي وَلَوْ آيَةً <span class="item-sep">✦</span></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-float-card2">
+          <span class="arabic">دعوة الحديث</span>
+          <span class="en">Est. Bangladesh 2008</span>
+        </div>
+        <div class="about-main-visual">
+          <span style="z-index:1;position:relative">الحديث</span>
+        </div>
+        <div class="about-float-card">
+          <div class="val">18+</div>
+          <div class="lbl">Years of Da'wah Service</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="sec-label">About Us</div>
+        <h2 class="sec-title">Spreading the Light of <em>Authentic Sunnah</em></h2>
+        <div class="about-quote-block">
+          <div class="arabic-q">«مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ»</div>
+          <div class="trans">"Whomever Allah intends good for, He gives them understanding of the religion."</div>
+          <div class="ref">— Sahih Al-Bukhari & Sahih Muslim</div>
+        </div>
+        <p class="about-p">Da'wah Hadith Trust is a globally recognized Islamic institution founded by الشيخ Hamza Al Hassan, dedicated to the preservation and dissemination of authentic Hadith sciences and Da'wah methodologies. Based in Bangladesh with centers in Dhaka and Sirajganj, our work spans 40+ countries.</p>
+        <p class="about-p">Our programs are built on rigorous scholarly foundations, verified by senior Muhadditheen, and delivered through a modern approach that makes authentic Islamic knowledge accessible to Muslims worldwide — whether through in-person classes, online courses, or community outreach programs.</p>
+        <p class="about-p">We are committed to empowering every Muslim — from the student of knowledge to the grassroots Da'ee — with the tools, training, and certification needed to spread the authentic Sunnah of the Prophet Muhammad ﷺ.</p>
+        <div class="feature-pills">
+          <div class="feature-pill"><span class="pill-icon">✓</span> Authentic Hadith Curriculum</div>
+          <div class="feature-pill"><span class="pill-icon">🌍</span> 40+ Countries Reached</div>
+          <div class="feature-pill"><span class="pill-icon">📜</span> Ijaaza Certification</div>
+          <div class="feature-pill"><span class="pill-icon">💻</span> Online Learning Platform</div>
+          <div class="feature-pill"><span class="pill-icon">🤲</span> Charity & Welfare Work</div>
+          <div class="feature-pill"><span class="pill-icon">👦</span> Youth Empowerment</div>
+          <div class="feature-pill"><span class="pill-icon">🕌</span> Community Outreach</div>
+          <div class="feature-pill"><span class="pill-icon">🎓</span> Scholarship Programs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROGRAMS
+     ============================================================ -->
+<section class="programs" id="programs">
+  <div class="container">
+    <div class="sec-header center">
+      <div class="sec-label">Our Programs</div>
+      <h2 class="sec-title">World-Class <em>Islamic Education</em></h2>
+      <p class="sec-sub">From foundational Hadith studies to advanced scholarly certification — comprehensive Islamic education for every level and background.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="prog-card">
+        <div class="prog-card-banner pb-1">
+          <div class="prog-banner-pattern"></div>
+          <div class="prog-banner-emoji">📖</div>
+          <div class="prog-badge">Core</div>
+        </div>
+        <div class="prog-card-body">
+          <h3>Hadith Sciences (Uloom Al-Hadith)</h3>
+          <p>In-depth study of Hadith terminology, isnad criticism, the six major collections, and principles of authentication by certified Muhadditheen.</p>
+          <div class="prog-meta">
+            <div class="prog-meta-item">⏱ <strong>12 months</strong></div>
+            <div class="prog-meta-item">👥 <strong>In-person & Online</strong></div>
+          </div>
+        </div>
+        <div class="prog-card-footer">
+          <div class="price">৳4,800 <span>/ semester</span></div>
+          <button class="prog-enroll" onclick="toast('📚 Enrollment form opening!')">Enroll →</button>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-card-banner pb-2">
+          <div class="prog-banner-pattern"></div>
+          <div class="prog-banner-emoji">🌍</div>
+          <div class="prog-badge">Popular</div>
+        </div>
+        <div class="prog-card-body">
+          <h3>Da'wah Training & Methodology</h3>
+          <p>Comprehensive training in Islamic outreach, public speaking, interfaith dialogue, social media da'wah, and contemporary outreach strategies.</p>
+          <div class="prog-meta">
+            <div class="prog-meta-item">⏱ <strong>6 months</strong></div>
+            <div class="prog-meta-item">👥 <strong>Online & Workshops</strong></div>
+          </div>
+        </div>
+        <div class="prog-card-footer">
+          <div class="price">৳2,400 <span>/ semester</span></div>
+          <button class="prog-enroll" onclick="toast('📚 Enrollment form opening!')">Enroll →</button>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-card-banner pb-3">
+          <div class="prog-banner-pattern"></div>
+          <div class="prog-banner-emoji">💻</div>
+          <div class="prog-badge">Online</div>
+        </div>
+        <div class="prog-card-body">
+          <h3>Online Islamic Courses</h3>
+          <p>Live and recorded courses in Aqeedah, Fiqh, Seerah, Arabic, and Quran memorization — accessible from anywhere in the world, at any time.</p>
+          <div class="prog-meta">
+            <div class="prog-meta-item">⏱ <strong>Flexible</strong></div>
+            <div class="prog-meta-item">👥 <strong>100% Online</strong></div>
+          </div>
+        </div>
+        <div class="prog-card-footer">
+          <div class="price">৳1,200 <span>/ course</span></div>
+          <button class="prog-enroll" onclick="toast('📚 Enrollment form opening!')">Enroll →</button>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-card-banner pb-4">
+          <div class="prog-banner-pattern"></div>
+          <div class="prog-banner-emoji">👦</div>
+          <div class="prog-badge">Youth</div>
+        </div>
+        <div class="prog-card-body">
+          <h3>Youth Islamic Education Program</h3>
+          <p>Engaging, age-appropriate curriculum for Muslims aged 8–18, building strong Islamic identity, character, and foundational knowledge.</p>
+          <div class="prog-meta">
+            <div class="prog-meta-item">⏱ <strong>Year-round</strong></div>
+            <div class="prog-meta-item">👥 <strong>Ages 8–18</strong></div>
+          </div>
+        </div>
+        <div class="prog-card-footer">
+          <div class="price">Free <span>/ subsidized</span></div>
+          <button class="prog-enroll" onclick="toast('📚 Registration form opening!')">Register →</button>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-card-banner pb-5">
+          <div class="prog-banner-pattern"></div>
+          <div class="prog-banner-emoji">🎓</div>
+          <div class="prog-badge">Advanced</div>
+        </div>
+        <div class="prog-card-body">
+          <h3>Scholarly Ijaaza Program</h3>
+          <p>Advanced certification with Ijaaza in Hadith narration through an unbroken chain (sanad) to the Prophet Muhammad ﷺ — for qualified scholars.</p>
+          <div class="prog-meta">
+            <div class="prog-meta-item">⏱ <strong>2–3 years</strong></div>
+            <div class="prog-meta-item">👥 <strong>By application</strong></div>
+          </div>
+        </div>
+        <div class="prog-card-footer">
+          <div class="price">Application <span>required</span></div>
+          <button class="prog-enroll" onclick="toast('📚 Application form opening!')">Apply →</button>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-card-banner pb-6">
+          <div class="prog-banner-pattern"></div>
+          <div class="prog-banner-emoji">🤲</div>
+          <div class="prog-badge">Welfare</div>
+        </div>
+        <div class="prog-card-body">
+          <h3>Community & Charity Programs</h3>
+          <p>Orphan sponsorship, widow support, Zakat distribution, educational scholarships, and emergency relief for Muslims in need across Bangladesh.</p>
+          <div class="prog-meta">
+            <div class="prog-meta-item">⏱ <strong>Ongoing</strong></div>
+            <div class="prog-meta-item">👥 <strong>Community-wide</strong></div>
+          </div>
+        </div>
+        <div class="prog-card-footer">
+          <div class="price">Donate <span>to support</span></div>
+          <button class="prog-enroll" onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})">Support →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HADITH SECTION
+     ============================================================ -->
+<section class="hadith-sec" id="hadith">
+  <div class="hadith-bg-text">الحديث</div>
+  <div class="container">
+    <div class="sec-header center">
+      <div class="sec-label" style="color:var(--gold)">Hadith Collection</div>
+      <h2 class="sec-title light">Prophetic Wisdom for <em>Daily Life</em></h2>
+      <p class="sec-sub light">Authentic narrations from the Sahih collections, guiding Muslims in every dimension of life — curated and verified by our scholars.</p>
+    </div>
+    <div class="hadith-grid">
+      <div class="hadith-card">
+        <div class="hadith-number">Hadith 001</div>
+        <div class="hadith-arabic-text">«إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى»</div>
+        <div class="hadith-trans">"Actions are but by intentions, and each person will have but what they intended."</div>
+        <div class="hadith-ref">Sahih Al-Bukhari, Hadith 1 · Narrated by Umar ibn Al-Khattab (R.A)</div>
+      </div>
+      <div class="hadith-card">
+        <div class="hadith-number">Hadith 002</div>
+        <div class="hadith-arabic-text">«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»</div>
+        <div class="hadith-trans">"The best among you are those who learn the Quran and teach it to others."</div>
+        <div class="hadith-ref">Sahih Al-Bukhari, Hadith 5027 · Narrated by Uthman ibn Affan (R.A)</div>
+      </div>
+      <div class="hadith-card">
+        <div class="hadith-number">Hadith 003</div>
+        <div class="hadith-arabic-text">«طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ»</div>
+        <div class="hadith-trans">"Seeking knowledge is an obligation upon every Muslim."</div>
+        <div class="hadith-ref">Sunan Ibn Majah, Hadith 224 · Narrated by Anas ibn Malik (R.A)</div>
+      </div>
+      <div class="hadith-card">
+        <div class="hadith-number">Hadith 004</div>
+        <div class="hadith-arabic-text">«الدِّينُ النَّصِيحَةُ»</div>
+        <div class="hadith-trans">"Religion is sincere advice — to Allah, His Book, His Messenger, and to Muslim leaders and the general Muslims."</div>
+        <div class="hadith-ref">Sahih Muslim, Hadith 55 · Narrated by Tamim Al-Dari (R.A)</div>
+      </div>
+      <div class="hadith-card">
+        <div class="hadith-number">Hadith 005</div>
+        <div class="hadith-arabic-text">«مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ طَرِيقًا إِلَى الْجَنَّةِ»</div>
+        <div class="hadith-trans">"Whoever treads a path seeking knowledge, Allah will make easy for him a path to Paradise."</div>
+        <div class="hadith-ref">Sahih Muslim, Hadith 2699 · Narrated by Abu Hurairah (R.A)</div>
+      </div>
+      <div class="hadith-card">
+        <div class="hadith-number">Hadith 006</div>
+        <div class="hadith-arabic-text">«لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ»</div>
+        <div class="hadith-trans">"None of you truly believes until he loves for his brother what he loves for himself."</div>
+        <div class="hadith-ref">Sahih Al-Bukhari, Hadith 13 · Narrated by Anas ibn Malik (R.A)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EVENTS
+     ============================================================ -->
+<section class="events" id="events">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-label">Events & Activities</div>
+      <h2 class="sec-title">Upcoming <em>Events</em></h2>
+      <p class="sec-sub">Join us at international conferences, local workshops, online intensives, and community gatherings — expanding knowledge and brotherhood.</p>
+    </div>
+    <div class="events-layout">
+      <div class="events-upcoming">
+        <h3>Event Schedule — 2026</h3>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-date-box"><div class="eday">15</div><div class="emon">Mar</div></div>
+            <div class="event-info">
+              <h4>International Hadith Conference 2026</h4>
+              <p>Global gathering of Islamic scholars on preservation of Hadith sciences in the modern era. Keynote by Sheikh Hamza Al Hassan.</p>
+              <div class="event-chips"><span class="event-chip ec-intl">International</span><span class="event-chip ec-local">Dhaka, BD</span></div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date-box"><div class="eday">22</div><div class="emon">Mar</div></div>
+            <div class="event-info">
+              <h4>Da'wah Skills Workshop — Sirajganj</h4>
+              <p>Hands-on training in Islamic outreach, social media da'wah, and community engagement for youth leaders.</p>
+              <div class="event-chips"><span class="event-chip ec-local">Workshop</span><span class="event-chip ec-local">Sirajganj</span></div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date-box"><div class="eday">05</div><div class="emon">Apr</div></div>
+            <div class="event-info">
+              <h4>Online Quran & Hadith Intensive (3-Day)</h4>
+              <p>Live intensive covering Quran Tafsir and Hadith from Sahih Bukhari with Q&A sessions with Sheikh Hamza.</p>
+              <div class="event-chips"><span class="event-chip ec-online">Online · Zoom</span></div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date-box"><div class="eday">20</div><div class="emon">Apr</div></div>
+            <div class="event-info">
+              <h4>Annual Charity Gala & Community Iftar</h4>
+              <p>Fundraising dinner for orphan care, education scholarships, and community welfare programs.</p>
+              <div class="event-chips"><span class="event-chip ec-charity">Charity</span><span class="event-chip ec-local">Dhaka</span></div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date-box"><div class="eday">10</div><div class="emon">May</div></div>
+            <div class="event-info">
+              <h4>Ijaaza Program Application Deadline</h4>
+              <p>Final date to submit applications for the 2026–2027 Scholarly Ijaaza Program cohort.</p>
+              <div class="event-chips"><span class="event-chip ec-intl">Application</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="events-featured">
+        <h3>Featured Event</h3>
+        <div class="featured-event-card">
+          <div class="fec-top">
+            <div class="fec-tag">⭐ Flagship Event</div>
+            <h2 class="fec-title">International Hadith Conference 2026</h2>
+            <p class="fec-desc">The most significant gathering in Da'wah Hadith Trust's annual calendar — bringing together scholars, students, and Da'ees from across the globe to discuss the preservation, authentication, and teaching of Prophetic Hadith in the 21st century.</p>
+          </div>
+          <div class="fec-meta">
+            <div class="fec-meta-item"><div class="fml">Date</div><div class="fmv">15 March 2026</div></div>
+            <div class="fec-meta-item"><div class="fml">Time</div><div class="fmv">9:00 AM – 8:00 PM</div></div>
+            <div class="fec-meta-item"><div class="fml">Venue</div><div class="fmv">Dhaka, Bangladesh</div></div>
+            <div class="fec-meta-item"><div class="fml">Language</div><div class="fmv">Arabic · Bengali · English</div></div>
+            <div class="fec-meta-item"><div class="fml">Host</div><div class="fmv">Sheikh Hamza Al Hassan</div></div>
+            <div class="fec-meta-item"><div class="fml">Entry</div><div class="fmv">Free Registration</div></div>
+          </div>
+          <div class="fec-bottom">
+            <button class="btn btn-gold" onclick="toast('📅 Registration opening soon!')">Register Now</button>
+            <button class="btn btn-ghost" onclick="toast('📋 Event details page loading...')">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY
+     ============================================================ -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="sec-header center">
+      <div class="sec-label">Media Gallery</div>
+      <h2 class="sec-title">Our <em>Moments</em></h2>
+      <p class="sec-sub">Glimpses of our programs, conferences, community service, and activities across Bangladesh and the world.</p>
+    </div>
+    <div class="gallery-mosaic">
+      <div class="gal-item span2 rowspan2" onclick="toast('🖼 Opening full gallery...')">
+        <div class="gal-content">🕌</div>
+        <div class="gal-overlay"><div class="gal-icon">🔍</div><span>International Conference</span></div>
+      </div>
+      <div class="gal-item" onclick="toast('🖼 Opening photo...')">
+        <div class="gal-content">📖</div>
+        <div class="gal-overlay"><div class="gal-icon">🔍</div><span>Hadith Classes</span></div>
+      </div>
+      <div class="gal-item" onclick="toast('🖼 Opening photo...')">
+        <div class="gal-content">🌍</div>
+        <div class="gal-overlay"><div class="gal-icon">🔍</div><span>Global Outreach</span></div>
+      </div>
+      <div class="gal-item" onclick="toast('🖼 Opening photo...')">
+        <div class="gal-content">🎓</div>
+        <div class="gal-overlay"><div class="gal-icon">🔍</div><span>Graduation Ceremony</span></div>
+      </div>
+      <div class="gal-item" onclick="toast('🖼 Opening photo...')">
+        <div class="gal-content">🤲</div>
+        <div class="gal-overlay"><div class="gal-icon">🔍</div><span>Charity Events</span></div>
+      </div>
+      <div class="gal-item" onclick="toast('🖼 Opening photo...')">
+        <div class="gal-content">👦</div>
+        <div class="gal-overlay"><div class="gal-icon">🔍</div><span>Youth Program</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <button class="btn btn-gold" onclick="toast('📷 Full gallery loading...')">View Full Gallery →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DONATE
+     ============================================================ -->
+<section class="donate" id="donate">
+  <div class="donate-arabic-bg">صدقة</div>
+  <div class="container">
+    <div class="donate-grid">
+      <div class="donate-left">
+        <div class="sec-label" style="color:var(--gold)">Support Us</div>
+        <h2 class="sec-title light">Your Sadaqah<br><em>Changes Lives</em></h2>
+        <p class="sec-sub light" style="margin-bottom:0">Every donation — large or small — directly supports authentic Islamic education, Da'wah outreach, orphan care, and community welfare programs across Bangladesh and globally.</p>
+        <div class="donate-verse">
+          <div class="arabic">«مَنْ ذَا الَّذِي يُقْرِضُ اللَّهَ قَرْضًا حَسَنًا فَيُضَاعِفَهُ لَهُ أَضْعَافًا كَثِيرَةً»</div>
+          <div class="trans">"Who will lend Allah a goodly loan so He may multiply it for him many times over?" — Quran 2:245</div>
+          <div class="ref">Al-Quran Al-Karim · Surah Al-Baqarah, 2:245</div>
+        </div>
+        <div class="impact-stats">
+          <div class="impact-stat"><div class="is-icon">📚</div><span class="is-val">15K+</span><span class="is-lbl">Students Educated</span></div>
+          <div class="impact-stat"><div class="is-icon">🍽</div><span class="is-val">500+</span><span class="is-lbl">Orphans Supported</span></div>
+          <div class="impact-stat"><div class="is-icon">🏫</div><span class="is-val">12</span><span class="is-lbl">Da'wah Centers</span></div>
+          <div class="impact-stat"><div class="is-icon">🌍</div><span class="is-val">40+</span><span class="is-lbl">Countries Reached</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="donate-form-card">
+          <div class="dfc-header">
+            <h3>🤲 Make a Donation</h3>
+            <p>Secure payment — Jazakallah Khair for your generosity</p>
+          </div>
+          <div class="dfc-body">
+            <div class="amount-selector">
+              <label>Choose Amount (BDT)</label>
+              <div class="amount-buttons">
+                <div class="amount-btn2" onclick="setAmt(this,'500')">৳500</div>
+                <div class="amount-btn2 sel" onclick="setAmt(this,'1000')">৳1,000</div>
+                <div class="amount-btn2" onclick="setAmt(this,'2500')">৳2,500</div>
+                <div class="amount-btn2" onclick="setAmt(this,'5000')">৳5,000</div>
+                <div class="amount-btn2" onclick="setAmt(this,'10000')">৳10,000</div>
+                <div class="amount-btn2" onclick="setAmt(this,'')">Custom</div>
+              </div>
+              <input type="number" class="custom-amount" id="donateAmount" placeholder="Or enter custom amount..." value="1000">
+            </div>
+            <div class="form-field">
+              <label>Donation Fund</label>
+              <select>
+                <option>General Da'wah Fund</option>
+                <option>Hadith Education Program</option>
+                <option>Orphan Care & Support</option>
+                <option>Scholarship Fund</option>
+                <option>Community Welfare</option>
+                <option>Da'wah Center Construction</option>
+              </select>
+            </div>
+            <div class="form-two">
+              <div class="form-field"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+              <div class="form-field"><label>Phone</label><input type="tel" placeholder="+880..."></div>
+            </div>
+            <div class="form-field"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+            <div class="progress-section">
+              <div class="prog-header"><span>Monthly Goal</span><span>৳72,000 of ৳100,000</span></div>
+              <div class="prog-bar"><div class="prog-fill"></div></div>
+            </div>
+            <button class="btn btn-gold btn-wide" onclick="toast('🤲 Jazakallah Khair! Redirecting to secure payment...')">
+              Donate Now — Secure Payment →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="sec-header center">
+      <div class="sec-label">Testimonials</div>
+      <h2 class="sec-title">What Our <em>Community Says</em></h2>
+      <p class="sec-sub">Words from students, alumni, donors, and community members who have experienced Da'wah Hadith Trust firsthand.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Sheikh Hamza Al Hassan's Hadith program completely transformed my understanding of Islam. The scholarly depth, authenticity, and sincerity of the teachers is truly unmatched. I recommend this institution to every Muslim seeking knowledge."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">AK</div>
+          <div class="testi-author-info"><strong>Abdullah Khan</strong><span>Hadith Graduate, Dhaka</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"The online courses allowed me to access authentic Islamic knowledge from my home in the UK. The curriculum is rigorous, the scholars are qualified, and the community support is exceptional. Alhamdulillah!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">SR</div>
+          <div class="testi-author-info"><strong>Sister Rahela</strong><span>Online Student, London, UK</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"As a monthly donor, I am completely confident my contributions reach genuine Islamic work. The transparency, impact reports, and dedication of Sheikh Hamza give me full trust in this blessed institution."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">MH</div>
+          <div class="testi-author-info"><strong>Muhammad Hassan</strong><span>Monthly Donor, Dubai, UAE</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     NEWSLETTER
+     ============================================================ -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div>
+        <div class="sec-label" style="color:var(--gold)">Newsletter</div>
+        <h2 class="sec-title light" style="font-size:2rem;margin-bottom:10px">Stay Connected<br><em>with Da'wah</em></h2>
+        <p class="sec-sub light" style="margin:0">Receive Hadith of the day, event announcements, new course alerts, and Islamic knowledge directly in your inbox.</p>
+      </div>
+      <div>
+        <div class="nl-form">
+          <input type="email" class="nl-input" placeholder="Enter your email address...">
+          <button class="btn btn-gold" onclick="toast('✅ Subscribed! Jazakallah Khair — check your inbox.')">Subscribe</button>
+        </div>
+        <p style="color:rgba(255,255,255,.25);font-size:.75rem;margin-top:10px">No spam, unsubscribe anytime. Join 8,000+ subscribers globally.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-label">Get In Touch</div>
+      <h2 class="sec-title">Contact <em>Sheikh Hamza Al Hassan</em></h2>
+      <p class="sec-sub">For program enrollment, partnerships, media inquiries, donations, or any questions — we respond within 24 hours.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <p style="color:var(--muted);line-height:1.85;margin-bottom:8px">الشيخ Hamza Al Hassan and the Da'wah Hadith Trust team are here to serve the global Muslim community. Reach out through any of the channels below — we would love to hear from you.</p>
+        <div class="contact-info-cards">
+          <div class="cic">
+            <div class="cic-icon ci6">📱</div>
+            <div>
+              <div class="cic-label">WhatsApp</div>
+              <div class="cic-val"><a href="https://wa.me/8801317770255" target="_blank">+880 1317770255</a></div>
+            </div>
+          </div>
+          <div class="cic">
+            <div class="cic-icon ci2">✉️</div>
+            <div>
+              <div class="cic-label">Email Address</div>
+              <div class="cic-val"><a href="mailto:hamzahasanadnan@gmail.com">hamzahasanadnan@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="cic">
+            <div class="cic-icon ci3">📍</div>
+            <div>
+              <div class="cic-label">Location</div>
+              <div class="cic-val">Dhaka & Sirajganj, Bangladesh</div>
+            </div>
+          </div>
+          <div class="cic">
+            <div class="cic-icon ci4">🌐</div>
+            <div>
+              <div class="cic-label">Facebook Page</div>
+              <div class="cic-val"><a href="https://www.facebook.com/share/1AxFyGWyDk/" target="_blank">Da'wah Hadith Trust Facebook</a></div>
+            </div>
+          </div>
+          <div class="cic">
+            <div class="cic-icon ci5">💼</div>
+            <div>
+              <div class="cic-label">LinkedIn Profile</div>
+              <div class="cic-val"><a href="https://www.linkedin.com/in/ranju-hasan-khan-5482952ba" target="_blank">Sheikh Hamza Al Hassan</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3>Send a Message</h3>
+        <p>Fill out the form and our team will respond within 24 hours, In sha Allah.</p>
+        <div class="cf-two">
+          <div class="cf-group"><label class="cf-label">First Name</label><input class="cf-input" type="text" placeholder="First name"></div>
+          <div class="cf-group"><label class="cf-label">Last Name</label><input class="cf-input" type="text" placeholder="Last name"></div>
+        </div>
+        <div class="cf-group"><label class="cf-label">Email Address</label><input class="cf-input" type="email" placeholder="your@email.com"></div>
+        <div class="cf-group"><label class="cf-label">Phone / WhatsApp</label><input class="cf-input" type="tel" placeholder="+880..."></div>
+        <div class="cf-group">
+          <label class="cf-label">Subject</label>
+          <select class="cf-input">
+            <option>General Inquiry</option>
+            <option>Program Enrollment</option>
+            <option>Donation Inquiry</option>
+            <option>Partnership / Collaboration</option>
+            <option>Media / Press</option>
+            <option>Ijaaza Application</option>
+          </select>
+        </div>
+        <div class="cf-group"><label class="cf-label">Message</label><textarea class="cf-input cf-textarea" placeholder="Your message..."></textarea></div>
+        <button class="btn btn-gold btn-wide" onclick="toast('✅ Message sent! We will respond within 24 hours, In sha Allah.')">
+          📨 Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="fb-logo">
+            <div class="fb-logo-em">د</div>
+            <div class="fb-logo-text">
+              <div class="l1">Da'wah Hadith Trust</div>
+              <div class="l2">Global Islamic Education</div>
+            </div>
+          </div>
+          <p>Spreading the authentic Sunnah of the Prophet Muhammad ﷺ through rigorous Hadith education, Da'wah training, and community service — rooted in Bangladesh, reaching the world since 2008.</p>
+          <p style="font-family:'Scheherazade New',serif;font-size:1.1rem;color:rgba(200,146,42,.6);direction:rtl;margin-top:12px;margin-bottom:20px">الشيخ حمزة الحسن — داعية وعالم حديث</p>
+          <div class="footer-social-row">
+            <a href="https://www.facebook.com/share/1AxFyGWyDk/" target="_blank" class="fsoc" title="Facebook">f</a>
+            <a href="https://www.linkedin.com/in/ranju-hasan-khan-5482952ba" target="_blank" class="fsoc" title="LinkedIn">in</a>
+            <a href="https://wa.me/8801317770255" target="_blank" class="fsoc" title="WhatsApp">W</a>
+            <a href="mailto:hamzahasanadnan@gmail.com" class="fsoc" title="Email">✉</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#hadith">Daily Hadith</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="#programs">Hadith Sciences</a></li>
+            <li><a href="#programs">Da'wah Training</a></li>
+            <li><a href="#programs">Online Courses</a></li>
+            <li><a href="#programs">Youth Program</a></li>
+            <li><a href="#programs">Ijaaza Program</a></li>
+            <li><a href="#programs">Charity Welfare</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#donate">Donate Now</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="javascript:openLogin()">Admin Login</a></li>
+            <li><a href="https://wa.me/8801317770255" target="_blank">WhatsApp</a></li>
+            <li><a href="https://www.facebook.com/share/1AxFyGWyDk/" target="_blank">Facebook</a></li>
+            <li><a href="https://www.linkedin.com/in/ranju-hasan-khan-5482952ba" target="_blank">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <p>© 2026 Da'wah Hadith Trust. Founded by الشيخ Hamza Al Hassan. All rights reserved.</p>
+        <div class="footer-bottom-arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     LOGIN MODAL
+     ============================================================ -->
+<div id="login-modal">
+  <div class="login-card">
+    <div class="login-card-top">
+      <button class="login-close-btn" onclick="closeLogin()">✕</button>
+      <div class="login-logo">الشيخ</div>
+      <div class="login-title">Da'wah Hadith Trust</div>
+      <div class="login-sub">Member & Admin Portal — الدخول</div>
+      <div class="login-tabs">
+        <button class="ltab active" onclick="switchLoginTab('login',this)">Login</button>
+        <button class="ltab" onclick="switchLoginTab('register',this)">Register</button>
+      </div>
+    </div>
+    <div class="login-body">
+      <div id="login-section">
+        <div class="login-error" id="login-err">❌ Invalid credentials. Hint: admin / admin123</div>
+        <div class="lf"><label>Username or Email</label><input type="text" id="lu" placeholder="Enter username..."></div>
+        <div class="lf"><label>Password</label><input type="password" id="lp" placeholder="Enter password..."></div>
+        <div class="login-forgot"><a href="javascript:toast('📧 Password reset email sent!')">Forgot password?</a></div>
+        <button class="btn btn-gold btn-wide" onclick="doLogin()">🔐 Login to Portal</button>
+        <div class="login-demo">Demo access: username <b>admin</b> · password <b>admin123</b></div>
+      </div>
+      <div id="register-section">
+        <div class="lf"><label>Full Name</label><input type="text" placeholder="Your full name"></div>
+        <div class="lf"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+        <div class="lf"><label>Phone / WhatsApp</label><input type="tel" placeholder="+880..."></div>
+        <div class="lf"><label>Password</label><input type="password" placeholder="Create password"></div>
+        <div class="lf"><label>Confirm Password</label><input type="password" placeholder="Confirm password"></div>
+        <button class="btn btn-gold btn-wide" onclick="closeLogin();toast('✅ Registration submitted! Pending admin approval — Jazakallah Khair.')">📝 Create Account</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ADMIN PANEL
+     ============================================================ -->
+<div id="admin-panel">
+  <div class="adm-sidebar">
+    <div class="adm-sidebar-logo">
+      <div class="adm-logo-em">د</div>
+      <div class="adm-logo-text">
+        <div class="al1">Admin Panel</div>
+        <div class="al2">Da'wah Hadith Trust</div>
+      </div>
+    </div>
+    <div class="adm-nav">
+      <div class="adm-nav-section">
+        <div class="adm-nav-section-label">Overview</div>
+        <button class="adm-nav-item act" onclick="showAdmSec('dashboard',this)"><span class="ni-icon">📊</span> Dashboard</button>
+        <button class="adm-nav-item" onclick="showAdmSec('analytics',this)"><span class="ni-icon">📈</span> Analytics</button>
+      </div>
+      <div class="adm-nav-section">
+        <div class="adm-nav-section-label">Management</div>
+        <button class="adm-nav-item" onclick="showAdmSec('students',this)"><span class="ni-icon">👥</span> Students <span class="ni-badge">15K</span></button>
+        <button class="adm-nav-item" onclick="showAdmSec('programs',this)"><span class="ni-icon">📚</span> Programs</button>
+        <button class="adm-nav-item" onclick="showAdmSec('events',this)"><span class="ni-icon">📅</span> Events <span class="ni-badge">5</span></button>
+        <button class="adm-nav-item" onclick="showAdmSec('hadith-mgr',this)"><span class="ni-icon">📖</span> Hadith Content</button>
+        <button class="adm-nav-item" onclick="showAdmSec('gallery-mgr',this)"><span class="ni-icon">🖼</span> Gallery</button>
+      </div>
+      <div class="adm-nav-section">
+        <div class="adm-nav-section-label">Finance</div>
+        <button class="adm-nav-item" onclick="showAdmSec('donations',this)"><span class="ni-icon">💰</span> Donations</button>
+        <button class="adm-nav-item" onclick="showAdmSec('scholarships',this)"><span class="ni-icon">🎓</span> Scholarships</button>
+      </div>
+      <div class="adm-nav-section">
+        <div class="adm-nav-section-label">Communication</div>
+        <button class="adm-nav-item" onclick="showAdmSec('messages',this)"><span class="ni-icon">✉️</span> Messages <span class="ni-badge">38</span></button>
+        <button class="adm-nav-item" onclick="showAdmSec('newsletter-mgr',this)"><span class="ni-icon">📨</span> Newsletter</button>
+      </div>
+      <div class="adm-nav-section">
+        <div class="adm-nav-section-label">System</div>
+        <button class="adm-nav-item" onclick="showAdmSec('users',this)"><span class="ni-icon">👤</span> User Accounts</button>
+        <button class="adm-nav-item" onclick="showAdmSec('settings',this)"><span class="ni-icon">⚙️</span> Settings</button>
+      </div>
+    </div>
+    <div class="adm-sidebar-bottom">
+      <button class="adm-nav-item" style="color:#ff6b6b" onclick="closeAdmin()">
+        <span class="ni-icon">🚪</span> Exit Admin Panel
+      </button>
+    </div>
+  </div>
+
+  <div class="adm-main">
+    <div class="adm-topbar">
+      <div class="adm-topbar-left">
+        <h2 id="adm-page-title">Dashboard Overview</h2>
+      </div>
+      <div class="adm-topbar-right">
+        <div class="adm-user-pill">👤 Admin — Sheikh Hamza</div>
+        <button class="adm-close-btn" onclick="closeAdmin()">✕ Close</button>
+      </div>
+    </div>
+    <div class="adm-content">
+
+      <!-- DASHBOARD -->
+      <div class="adm-section act" id="sec-dashboard">
+        <div class="adm-stat-row">
+          <div class="adm-stat">
+            <div class="adm-stat-top">
+              <div class="adm-stat-icon" style="background:rgba(39,174,96,.12)">👥</div>
+              <div class="adm-stat-change up">↑ 12%</div>
+            </div>
+            <span class="sv">15,420</span>
+            <span class="sl">Total Students</span>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-top">
+              <div class="adm-stat-icon" style="background:rgba(200,146,42,.12)">💰</div>
+              <div class="adm-stat-change up">↑ 8%</div>
+            </div>
+            <span class="sv">৳72,450</span>
+            <span class="sl">Monthly Donations</span>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-top">
+              <div class="adm-stat-icon" style="background:rgba(52,152,219,.12)">📚</div>
+              <div class="adm-stat-change up">↑ 2 new</div>
+            </div>
+            <span class="sv">24</span>
+            <span class="sl">Active Programs</span>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-top">
+              <div class="adm-stat-icon" style="background:rgba(231,76,60,.12)">✉️</div>
+              <div class="adm-stat-change dn">38 unread</div>
+            </div>
+            <span class="sv">38</span>
+            <span class="sl">Pending Messages</span>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+          <div class="adm-chart">
+            <h3>Monthly Donations (৳k) — 2026</h3>
+            <div class="chart-bars">
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:40%"></div><div class="chart-label">Jan</div></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:55%"></div><div class="chart-label">Feb</div></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:72%;background:rgba(200,146,42,.8)"></div><div class="chart-label">Mar</div></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:65%"></div><div class="chart-label">Apr</div></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:80%"></div><div class="chart-label">May</div></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:60%"></div><div class="chart-label">Jun</div></div>
+            </div>
+          </div>
+          <div class="adm-chart">
+            <h3>Student Enrollments by Program</h3>
+            <div class="chart-bars">
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:90%;background:rgba(13,122,78,.6)"></div><div class="chart-label">Online</div></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:65%;background:rgba(52,152,219,.5)"></div><div class="chart-label">Hadith</div></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:50%"></div><div class="chart-label">Da'wah</div></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:30%;background:rgba(231,76,60,.4)"></div><div class="chart-label">Youth</div></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="height:15%;background:rgba(142,68,173,.5)"></div><div class="chart-label">Ijaaza</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-table-wrap">
+          <div class="adm-table-header">
+            <h3>Recent Enrollments</h3>
+            <button class="adm-action-btn aab-primary" onclick="toast('📊 Full report exported!')">Export CSV</button>
+          </div>
+          <table class="adm-tbl">
+            <thead><tr><th>#</th><th>Student Name</th><th>Program</th><th>Country</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>001</td><td>Abdullah Rahman</td><td>Hadith Sciences</td><td>🇧🇩 Bangladesh</td><td>Mar 3, 2026</td><td><span class="badge badge-green">Active</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Opening student profile...')">View</button><button class="adm-action-btn aab-danger" onclick="toast('Student removed')">Remove</button></td></tr>
+              <tr><td>002</td><td>Fatima Malik</td><td>Online Courses</td><td>🇬🇧 UK</td><td>Mar 2, 2026</td><td><span class="badge badge-green">Active</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Opening student profile...')">View</button><button class="adm-action-btn aab-danger" onclick="toast('Student removed')">Remove</button></td></tr>
+              <tr><td>003</td><td>Omar Sheikh</td><td>Da'wah Training</td><td>🇵🇰 Pakistan</td><td>Feb 28, 2026</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="adm-action-btn aab-green" onclick="toast('✅ Student approved!')">Approve</button><button class="adm-action-btn aab-danger" onclick="toast('Student rejected')">Reject</button></td></tr>
+              <tr><td>004</td><td>Aisha Khatun</td><td>Youth Program</td><td>🇮🇳 India</td><td>Feb 27, 2026</td><td><span class="badge badge-green">Active</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Opening student profile...')">View</button><button class="adm-action-btn aab-danger" onclick="toast('Student removed')">Remove</button></td></tr>
+              <tr><td>005</td><td>Ibrahim Al-Amin</td><td>Ijaaza Program</td><td>🇸🇦 Saudi Arabia</td><td>Feb 25, 2026</td><td><span class="badge badge-blue">Interview</span></td><td><button class="adm-action-btn aab-green" onclick="toast('✅ Interview scheduled!')">Schedule</button><button class="adm-action-btn aab-danger" onclick="toast('Application rejected')">Reject</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ANALYTICS -->
+      <div class="adm-section" id="sec-analytics">
+        <div class="adm-sec-title">Site Analytics</div>
+        <div class="adm-stat-row">
+          <div class="adm-stat"><div class="adm-stat-top"><div class="adm-stat-icon" style="background:rgba(52,152,219,.12)">👁</div><div class="adm-stat-change up">↑ 23%</div></div><span class="sv">48,230</span><span class="sl">Monthly Visitors</span></div>
+          <div class="adm-stat"><div class="adm-stat-top"><div class="adm-stat-icon" style="background:rgba(39,174,96,.12)">📄</div><div class="adm-stat-change up">↑ 15%</div></div><span class="sv">4m 22s</span><span class="sl">Avg. Session Time</span></div>
+          <div class="adm-stat"><div class="adm-stat-top"><div class="adm-stat-icon" style="background:rgba(231,76,60,.12)">🔗</div><div class="adm-stat-change dn">↓ 3%</div></div><span class="sv">28%</span><span class="sl">Bounce Rate</span></div>
+          <div class="adm-stat"><div class="adm-stat-top"><div class="adm-stat-icon" style="background:rgba(142,68,173,.12)">🌍</div><div class="adm-stat-change up">↑ 5</div></div><span class="sv">40+</span><span class="sl">Countries</span></div>
+        </div>
+        <div class="adm-table-wrap">
+          <div class="adm-table-header"><h3>Top Traffic Sources</h3></div>
+          <table class="adm-tbl">
+            <thead><tr><th>Source</th><th>Visitors</th><th>%</th><th>Conversions</th></tr></thead>
+            <tbody>
+              <tr><td>🌐 Organic Search</td><td>18,450</td><td>38%</td><td>12%</td></tr>
+              <tr><td>f Facebook</td><td>12,300</td><td>25%</td><td>18%</td></tr>
+              <tr><td>W WhatsApp Shares</td><td>8,900</td><td>18%</td><td>22%</td></tr>
+              <tr><td>📧 Email Newsletter</td><td>5,200</td><td>11%</td><td>35%</td></tr>
+              <tr><td>🔗 Direct</td><td>3,380</td><td>7%</td><td>8%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- STUDENTS -->
+      <div class="adm-section" id="sec-students">
+        <div class="adm-sec-title">Student Management</div>
+        <div class="adm-form-card">
+          <h3>Add New Student</h3>
+          <div class="adm-form-grid">
+            <div class="adm-f"><label>Full Name</label><input type="text" placeholder="Student full name"></div>
+            <div class="adm-f"><label>Email</label><input type="email" placeholder="Email address"></div>
+            <div class="adm-f"><label>Phone</label><input type="tel" placeholder="+880..."></div>
+            <div class="adm-f"><label>Program</label><select><option>Hadith Sciences</option><option>Da'wah Training</option><option>Online Courses</option><option>Youth Program</option><option>Ijaaza Program</option></select></div>
+            <div class="adm-f"><label>Country</label><input type="text" placeholder="Country"></div>
+            <div class="adm-f"><label>Status</label><select><option>Active</option><option>Pending</option><option>Inactive</option></select></div>
+          </div>
+          <button class="btn btn-gold btn-sm" onclick="toast('✅ Student added successfully!')">Save Student</button>
+        </div>
+        <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+          <input type="text" placeholder="🔍 Search students..." style="flex:1;min-width:200px;padding:10px 14px;border-radius:8px;border:1px solid #2a2a2a;background:#111;color:#ccc;font-size:.88rem;outline:none">
+          <select style="padding:10px 14px;border-radius:8px;border:1px solid #2a2a2a;background:#111;color:#666;font-size:.88rem"><option>All Programs</option><option>Hadith Sciences</option><option>Da'wah Training</option></select>
+          <button class="adm-action-btn aab-primary" onclick="toast('📊 Exported!')">Export</button>
+        </div>
+        <div class="adm-table-wrap">
+          <div class="adm-table-header"><h3>All Students (15,420)</h3></div>
+          <table class="adm-tbl">
+            <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Program</th><th>Country</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>001</td><td>Abdullah Rahman</td><td>abd@email.com</td><td>Hadith Sciences</td><td>BD</td><td><span class="badge badge-green">Active</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Deleted!')">Del</button></td></tr>
+              <tr><td>002</td><td>Fatima Malik</td><td>fat@email.com</td><td>Online</td><td>UK</td><td><span class="badge badge-green">Active</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Deleted!')">Del</button></td></tr>
+              <tr><td>003</td><td>Omar Sheikh</td><td>om@email.com</td><td>Da'wah</td><td>PK</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="adm-action-btn aab-green" onclick="toast('Approved!')">Approve</button><button class="adm-action-btn aab-danger" onclick="toast('Rejected!')">Reject</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PROGRAMS MGR -->
+      <div class="adm-section" id="sec-programs">
+        <div class="adm-sec-title">Program Management</div>
+        <div class="adm-form-card">
+          <h3>Create New Program</h3>
+          <div class="adm-form-grid">
+            <div class="adm-f"><label>Program Name</label><input type="text" placeholder="Program title"></div>
+            <div class="adm-f"><label>Category</label><select><option>Hadith</option><option>Da'wah</option><option>Online</option><option>Youth</option><option>Advanced</option><option>Welfare</option></select></div>
+            <div class="adm-f"><label>Duration</label><input type="text" placeholder="e.g. 6 months"></div>
+            <div class="adm-f"><label>Fee (BDT)</label><input type="number" placeholder="0 for free"></div>
+            <div class="adm-f"><label>Mode</label><select><option>In-Person</option><option>Online</option><option>Hybrid</option></select></div>
+            <div class="adm-f"><label>Status</label><select><option>Published</option><option>Draft</option></select></div>
+          </div>
+          <div class="adm-f"><label>Description</label><textarea placeholder="Program description..."></textarea></div>
+          <button class="btn btn-gold btn-sm" onclick="toast('✅ Program published!')">Publish Program</button>
+        </div>
+        <div class="adm-table-wrap">
+          <div class="adm-table-header"><h3>All Programs (24)</h3></div>
+          <table class="adm-tbl">
+            <thead><tr><th>Program</th><th>Students</th><th>Mode</th><th>Fee</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>Hadith Sciences</td><td>3,420</td><td>Hybrid</td><td>৳4,800</td><td><span class="badge badge-green">Live</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Removed!')">Remove</button></td></tr>
+              <tr><td>Da'wah Training</td><td>2,100</td><td>Online</td><td>৳2,400</td><td><span class="badge badge-green">Live</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Removed!')">Remove</button></td></tr>
+              <tr><td>Online Courses</td><td>8,900</td><td>Online</td><td>৳1,200</td><td><span class="badge badge-green">Live</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Removed!')">Remove</button></td></tr>
+              <tr><td>Youth Program</td><td>1,000</td><td>In-Person</td><td>Free</td><td><span class="badge badge-yellow">Draft</span></td><td><button class="adm-action-btn aab-green" onclick="toast('Published!')">Publish</button><button class="adm-action-btn aab-danger" onclick="toast('Removed!')">Remove</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EVENTS MGR -->
+      <div class="adm-section" id="sec-events">
+        <div class="adm-sec-title">Event Management</div>
+        <div class="adm-form-card">
+          <h3>Create New Event</h3>
+          <div class="adm-form-grid">
+            <div class="adm-f"><label>Event Title</label><input type="text" placeholder="Event name"></div>
+            <div class="adm-f"><label>Date</label><input type="date"></div>
+            <div class="adm-f"><label>Time</label><input type="time"></div>
+            <div class="adm-f"><label>Venue</label><input type="text" placeholder="Location or Online"></div>
+            <div class="adm-f"><label>Type</label><select><option>International</option><option>Workshop</option><option>Online</option><option>Community</option><option>Charity</option></select></div>
+            <div class="adm-f"><label>Registration URL</label><input type="url" placeholder="https://..."></div>
+          </div>
+          <div class="adm-f"><label>Event Description</label><textarea placeholder="Detailed description..."></textarea></div>
+          <button class="btn btn-gold btn-sm" onclick="toast('✅ Event published!')">Publish Event</button>
+        </div>
+        <div class="adm-table-wrap">
+          <div class="adm-table-header"><h3>Upcoming Events</h3></div>
+          <table class="adm-tbl">
+            <thead><tr><th>Event</th><th>Date</th><th>Venue</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>International Hadith Conference 2026</td><td>15 Mar 2026</td><td>Dhaka</td><td>International</td><td><span class="badge badge-green">Published</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Removed!')">Remove</button></td></tr>
+              <tr><td>Da'wah Skills Workshop</td><td>22 Mar 2026</td><td>Sirajganj</td><td>Workshop</td><td><span class="badge badge-green">Published</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Removed!')">Remove</button></td></tr>
+              <tr><td>Online Quran & Hadith Intensive</td><td>5 Apr 2026</td><td>Online</td><td>Online</td><td><span class="badge badge-yellow">Draft</span></td><td><button class="adm-action-btn aab-green" onclick="toast('Published!')">Publish</button><button class="adm-action-btn aab-danger" onclick="toast('Removed!')">Remove</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HADITH MGR -->
+      <div class="adm-section" id="sec-hadith-mgr">
+        <div class="adm-sec-title">Hadith Content Manager</div>
+        <div class="adm-form-card">
+          <h3>Add New Hadith</h3>
+          <div class="adm-f"><label>Arabic Text</label><textarea placeholder="Arabic Hadith text..." style="font-family:'Scheherazade New',serif;font-size:1.2rem;direction:rtl;text-align:right"></textarea></div>
+          <div class="adm-f"><label>English Translation</label><textarea placeholder="English translation..."></textarea></div>
+          <div class="adm-form-grid">
+            <div class="adm-f"><label>Reference (Book & Hadith No.)</label><input type="text" placeholder="e.g. Sahih Bukhari, #5027"></div>
+            <div class="adm-f"><label>Narrator</label><input type="text" placeholder="Narrated by..."></div>
+            <div class="adm-f"><label>Category</label><select><option>Daily Hadith</option><option>Featured</option><option>Social Media Post</option><option>Email Newsletter</option></select></div>
+            <div class="adm-f"><label>Publication Date</label><input type="date"></div>
+          </div>
+          <button class="btn btn-gold btn-sm" onclick="toast('✅ Hadith published!')">Publish Hadith</button>
+        </div>
+        <div class="adm-table-wrap">
+          <div class="adm-table-header"><h3>Hadith Database</h3></div>
+          <table class="adm-tbl">
+            <thead><tr><th>#</th><th>Reference</th><th>Category</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>H001</td><td>Sahih Bukhari, #1</td><td>Daily</td><td><span class="badge badge-green">Live</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Deleted!')">Del</button></td></tr>
+              <tr><td>H002</td><td>Sahih Bukhari, #5027</td><td>Featured</td><td><span class="badge badge-green">Live</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Deleted!')">Del</button></td></tr>
+              <tr><td>H003</td><td>Sahih Muslim, #2699</td><td>Social Media</td><td><span class="badge badge-yellow">Scheduled</span></td><td><button class="adm-action-btn aab-green" onclick="toast('Published!')">Publish</button><button class="adm-action-btn aab-danger" onclick="toast('Deleted!')">Del</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GALLERY MGR -->
+      <div class="adm-section" id="sec-gallery-mgr">
+        <div class="adm-sec-title">Gallery Manager</div>
+        <div class="adm-form-card">
+          <h3>Upload New Photo</h3>
+          <div class="adm-form-grid">
+            <div class="adm-f"><label>Photo Title</label><input type="text" placeholder="Photo title"></div>
+            <div class="adm-f"><label>Category</label><select><option>Conference</option><option>Classes</option><option>Community</option><option>Youth</option><option>Charity</option></select></div>
+          </div>
+          <div class="adm-f"><label>Upload Photo</label><input type="file" accept="image/*"></div>
+          <div class="adm-f"><label>Caption</label><input type="text" placeholder="Photo caption..."></div>
+          <button class="btn btn-gold btn-sm" onclick="toast('✅ Photo uploaded!')">Upload Photo</button>
+        </div>
+      </div>
+
+      <!-- DONATIONS -->
+      <div class="adm-section" id="sec-donations">
+        <div class="adm-sec-title">Donation Management</div>
+        <div class="adm-stat-row" style="grid-template-columns:repeat(3,1fr)">
+          <div class="adm-stat"><div class="adm-stat-top"><div class="adm-stat-icon" style="background:rgba(39,174,96,.12)">💰</div></div><span class="sv">৳72,450</span><span class="sl">This Month</span></div>
+          <div class="adm-stat"><div class="adm-stat-top"><div class="adm-stat-icon" style="background:rgba(52,152,219,.12)">📊</div></div><span class="sv">৳8,24,300</span><span class="sl">Total 2026</span></div>
+          <div class="adm-stat"><div class="adm-stat-top"><div class="adm-stat-icon" style="background:rgba(200,146,42,.12)">🔁</div></div><span class="sv">342</span><span class="sl">Monthly Donors</span></div>
+        </div>
+        <div class="adm-table-wrap">
+          <div class="adm-table-header"><h3>Recent Donations</h3><button class="adm-action-btn aab-primary" onclick="toast('Exported!')">Export</button></div>
+          <table class="adm-tbl">
+            <thead><tr><th>Donor</th><th>Amount</th><th>Fund</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>Muhammad Hassan</td><td>৳5,000</td><td>General Fund</td><td>Mar 3, 2026</td><td><span class="badge badge-green">Verified</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Receipt sent!')">Receipt</button></td></tr>
+              <tr><td>Anonymous</td><td>৳2,500</td><td>Orphan Care</td><td>Mar 2, 2026</td><td><span class="badge badge-green">Verified</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Receipt sent!')">Receipt</button></td></tr>
+              <tr><td>Rahela Begum</td><td>৳10,000</td><td>Scholarship</td><td>Mar 1, 2026</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="adm-action-btn aab-green" onclick="toast('Verified!')">Verify</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SCHOLARSHIPS -->
+      <div class="adm-section" id="sec-scholarships">
+        <div class="adm-sec-title">Scholarship Management</div>
+        <div class="adm-form-card">
+          <h3>Award Scholarship</h3>
+          <div class="adm-form-grid">
+            <div class="adm-f"><label>Student Name</label><input type="text" placeholder="Recipient name"></div>
+            <div class="adm-f"><label>Program</label><select><option>Hadith Sciences</option><option>Da'wah Training</option><option>Online Courses</option></select></div>
+            <div class="adm-f"><label>Amount (BDT)</label><input type="number" placeholder="Scholarship amount"></div>
+            <div class="adm-f"><label>Duration</label><input type="text" placeholder="e.g. 1 year"></div>
+          </div>
+          <button class="btn btn-gold btn-sm" onclick="toast('✅ Scholarship awarded!')">Award Scholarship</button>
+        </div>
+      </div>
+
+      <!-- MESSAGES -->
+      <div class="adm-section" id="sec-messages">
+        <div class="adm-sec-title">Contact Messages</div>
+        <div class="adm-table-wrap">
+          <div class="adm-table-header"><h3>Inbox (38 Unread)</h3><button class="adm-action-btn aab-primary" onclick="toast('All marked as read!')">Mark All Read</button></div>
+          <table class="adm-tbl">
+            <thead><tr><th>From</th><th>Email</th><th>Subject</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><b style="color:#ccc">Omar Ali</b></td><td>omar@email.com</td><td>Program Enrollment</td><td>Mar 3</td><td><span class="badge badge-yellow">Unread</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Opening message...')">Read</button><button class="adm-action-btn aab-green" onclick="toast('Reply sent!')">Reply</button></td></tr>
+              <tr><td>Sara Khan</td><td>sara@email.com</td><td>Donation Inquiry</td><td>Mar 2</td><td><span class="badge badge-green">Read</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Opening message...')">View</button><button class="adm-action-btn aab-green" onclick="toast('Reply sent!')">Reply</button></td></tr>
+              <tr><td><b style="color:#ccc">James Ahmed</b></td><td>james@email.com</td><td>Partnership</td><td>Mar 1</td><td><span class="badge badge-yellow">Unread</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Opening message...')">Read</button><button class="adm-action-btn aab-green" onclick="toast('Reply sent!')">Reply</button></td></tr>
+              <tr><td><b style="color:#ccc">Ahmed Yusuf</b></td><td>ay@email.com</td><td>Ijaaza Application</td><td>Feb 28</td><td><span class="badge badge-yellow">Unread</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Opening message...')">Read</button><button class="adm-action-btn aab-green" onclick="toast('Reply sent!')">Reply</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- NEWSLETTER MGR -->
+      <div class="adm-section" id="sec-newsletter-mgr">
+        <div class="adm-sec-title">Newsletter Manager</div>
+        <div class="adm-form-card">
+          <h3>Compose & Send Newsletter</h3>
+          <div class="adm-f"><label>Subject Line</label><input type="text" placeholder="Newsletter subject..."></div>
+          <div class="adm-f"><label>Content</label><textarea style="height:160px" placeholder="Newsletter body content..."></textarea></div>
+          <div class="adm-form-grid">
+            <div class="adm-f"><label>Audience</label><select><option>All Subscribers (8,200+)</option><option>Students Only</option><option>Donors Only</option></select></div>
+            <div class="adm-f"><label>Schedule Send</label><input type="datetime-local"></div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-gold btn-sm" onclick="toast('✅ Newsletter sent to 8,200+ subscribers!')">Send Now</button>
+            <button class="adm-action-btn aab-primary" onclick="toast('📧 Test email sent!')">Send Test</button>
+          </div>
+        </div>
+        <div class="adm-stat-row" style="grid-template-columns:repeat(3,1fr)">
+          <div class="adm-stat"><span class="sv">8,240</span><span class="sl">Total Subscribers</span></div>
+          <div class="adm-stat"><span class="sv">42%</span><span class="sl">Open Rate</span></div>
+          <div class="adm-stat"><span class="sv">18%</span><span class="sl">Click Rate</span></div>
+        </div>
+      </div>
+
+      <!-- USERS -->
+      <div class="adm-section" id="sec-users">
+        <div class="adm-sec-title">User Account Management</div>
+        <div class="adm-table-wrap">
+          <div class="adm-table-header"><h3>Admin Users</h3><button class="adm-action-btn aab-green" onclick="toast('Add user form opening...')">+ Add User</button></div>
+          <table class="adm-tbl">
+            <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Last Login</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>Sheikh Hamza Al Hassan</td><td>hamzahasanadnan@gmail.com</td><td><span class="badge badge-blue">Super Admin</span></td><td>Today</td><td><span class="badge badge-green">Active</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button></td></tr>
+              <tr><td>Admin User</td><td>admin@trust.com</td><td><span class="badge badge-yellow">Admin</span></td><td>Yesterday</td><td><span class="badge badge-green">Active</span></td><td><button class="adm-action-btn aab-primary" onclick="toast('Editing...')">Edit</button><button class="adm-action-btn aab-danger" onclick="toast('Removed!')">Remove</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="adm-section" id="sec-settings">
+        <div class="adm-sec-title">Website Settings</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div class="adm-form-card">
+            <h3>General Settings</h3>
+            <div class="adm-f"><label>Site Title</label><input type="text" value="Da'wah Hadith Trust"></div>
+            <div class="adm-f"><label>Tagline</label><input type="text" value="Global Islamic Education"></div>
+            <div class="adm-f"><label>Admin Email</label><input type="email" value="hamzahasanadnan@gmail.com"></div>
+            <div class="adm-f"><label>WhatsApp Number</label><input type="text" value="+8801317770255"></div>
+            <div class="adm-f"><label>Monthly Donation Goal (৳)</label><input type="number" value="100000"></div>
+            <button class="btn btn-gold btn-sm" onclick="toast('✅ Settings saved!')">Save Settings</button>
+          </div>
+          <div class="adm-form-card">
+            <h3>Change Password</h3>
+            <div class="adm-f"><label>Current Password</label><input type="password" placeholder="Current password"></div>
+            <div class="adm-f"><label>New Password</label><input type="password" placeholder="New password"></div>
+            <div class="adm-f"><label>Confirm Password</label><input type="password" placeholder="Confirm new password"></div>
+            <button class="btn btn-gold btn-sm" onclick="toast('✅ Password updated!')">Update Password</button>
+          </div>
+        </div>
+        <div class="adm-form-card" style="margin-top:20px">
+          <h3>Social Media Links</h3>
+          <div class="adm-form-grid">
+            <div class="adm-f"><label>Facebook URL</label><input type="url" value="https://www.facebook.com/share/1AxFyGWyDk/"></div>
+            <div class="adm-f"><label>LinkedIn URL</label><input type="url" value="https://www.linkedin.com/in/ranju-hasan-khan-5482952ba"></div>
+            <div class="adm-f"><label>YouTube Channel</label><input type="url" placeholder="YouTube URL"></div>
+            <div class="adm-f"><label>Instagram</label><input type="url" placeholder="Instagram URL"></div>
+            <div class="adm-f"><label>Twitter / X</label><input type="url" placeholder="Twitter URL"></div>
+            <div class="adm-f"><label>Telegram</label><input type="url" placeholder="Telegram Group URL"></div>
+          </div>
+          <button class="btn btn-gold btn-sm" onclick="toast('✅ Social links updated!')">Save Links</button>
+        </div>
+      </div>
+
+    </div><!-- /adm-content -->
+  </div><!-- /adm-main -->
+</div><!-- /admin-panel -->
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ---- Custom Cursor ---- */
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+function animRing() { rx += (mx-rx)*.12; ry += (my-ry)*.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
+animRing();
+document.querySelectorAll('a,button,.prog-card,.event-item,.gal-item,.testi-card,.hadith-card,.amount-btn2').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.width='20px';cursor.style.height='20px'; ring.style.width='60px';ring.style.height='60px'; });
+  el.addEventListener('mouseleave', () => { cursor.style.width='12px';cursor.style.height='12px'; ring.style.width='40px';ring.style.height='40px'; });
+});
+
+/* ---- Preloader ---- */
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('preloader').classList.add('done'); }, 1600);
+  setTimeout(() => { toast('🌙 Assalamu Alaikum — Welcome to Da\'wah Hadith Trust'); }, 2000);
+});
+
+/* ---- Navbar Scroll ---- */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('btt').classList.toggle('show', window.scrollY > 400);
+});
+
+/* ---- Toast ---- */
+let toastTimer;
+function toast(msg, icon='🌙') {
+  document.getElementById('toast-msg').textContent = msg;
+  document.getElementById('toast-icon').textContent = icon;
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3600);
+}
+
+/* ---- Back to Top ---- */
+function scrollToTop() { window.scrollTo({top:0,behavior:'smooth'}); }
+
+/* ---- Mobile Nav ---- */
+function toggleMobile() {
+  document.getElementById('mobile-nav').classList.toggle('open');
+}
+
+/* ---- Login Modal ---- */
+function openLogin() { document.getElementById('login-modal').classList.add('open'); }
+function closeLogin() { document.getElementById('login-modal').classList.remove('open'); }
+document.getElementById('login-modal').addEventListener('click', e => { if(e.target===document.getElementById('login-modal')) closeLogin(); });
+
+function switchLoginTab(tab, el) {
+  document.querySelectorAll('.ltab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('login-section').style.display = tab==='login'?'block':'none';
+  document.getElementById('register-section').style.display = tab==='register'?'block':'none';
+}
+
+function doLogin() {
+  const u = document.getElementById('lu').value.trim();
+  const p = document.getElementById('lp').value.trim();
+  const err = document.getElementById('login-err');
+  if((u==='admin'||u==='hamzahasanadnan@gmail.com') && p==='admin123') {
+    err.style.display = 'none';
+    closeLogin();
+    setTimeout(() => { document.getElementById('admin-panel').classList.add('open'); toast('✅ Welcome back, الشيخ! Admin panel ready.','⚙'); }, 300);
+  } else {
+    err.style.display = 'block';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') { closeLogin(); closeAdmin(); }
+  if(e.key==='Enter' && document.getElementById('login-modal').classList.contains('open')) doLogin();
+});
+
+/* ---- Admin Panel ---- */
+function closeAdmin() { document.getElementById('admin-panel').classList.remove('open'); toast('Admin panel closed.','🚪'); }
+function showAdmSec(id, el) {
+  document.querySelectorAll('.adm-section').forEach(s => s.classList.remove('act'));
+  document.querySelectorAll('.adm-nav-item').forEach(i => i.classList.remove('act'));
+  const sec = document.getElementById('sec-'+id);
+  if(sec) sec.classList.add('act');
+  el.classList.add('act');
+  const titles = { dashboard:'Dashboard Overview', analytics:'Site Analytics', students:'Student Management', programs:'Program Management', events:'Event Management', 'hadith-mgr':'Hadith Content Manager', 'gallery-mgr':'Gallery Manager', donations:'Donation Management', scholarships:'Scholarship Management', messages:'Contact Messages', 'newsletter-mgr':'Newsletter Manager', users:'User Accounts', settings:'Website Settings' };
+  document.getElementById('adm-page-title').textContent = titles[id] || id;
+}
+
+/* ---- Donate Amounts ---- */
+function setAmt(el, val) {
+  document.querySelectorAll('.amount-btn2').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+  const inp = document.getElementById('donateAmount');
+  if(val) { inp.value = val; } else { inp.value = ''; inp.focus(); }
+}
+
+/* ---- Active Nav on Scroll ---- */
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop-100) cur = s.getAttribute('id'); });
+  document.querySelectorAll('.nav-link').forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href')==='#'+cur);
+  });
+});
+</script>
+</body>
+</html>
